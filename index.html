@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gulf Coast Sticker Solutions</title>
   <meta name="description" content="Custom die-cut stickers, vinyl decals, and business labels for Gulf Coast businesses in Angleton, Texas.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -289,7 +286,7 @@
     h1,
     h2,
     h3 {
-      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      font-family: "Arial Narrow", Impact, Arial, sans-serif;
       letter-spacing: 0;
       line-height: 0.92;
       margin: 0;
@@ -680,7 +677,7 @@
 
     .window-decal strong,
     .card-stamp strong {
-      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      font-family: "Arial Narrow", Impact, Arial, sans-serif;
       font-size: 28px;
       line-height: 0.9;
       text-transform: uppercase;
@@ -808,7 +805,7 @@
     }
 
     .mini-label strong {
-      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      font-family: "Arial Narrow", Impact, Arial, sans-serif;
       font-size: 24px;
       line-height: 0.9;
     }
@@ -926,7 +923,8 @@
     }
 
     .footer .google-link,
-    .call-line a {
+    .call-line a,
+    .terms-link {
       color: var(--gold);
       font-size: 14px;
       font-weight: 950;
@@ -1122,7 +1120,7 @@
       <img src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
       <span>
         <strong>Gulf Coast</strong>
-        <em>Sticker Solutions</em>
+        <em>Sticker Solutions™</em>
       </span>
     </a>
 
@@ -1140,7 +1138,7 @@
     <section class="hero section-shell" data-depth="0.18">
       <div class="glass hero-panel">
         <img class="hero-logo" src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
-        <p class="eyebrow">Angleton, Texas | Gulf Coast made</p>
+        <p class="eyebrow">Gulf Coast Sticker Solutions™ | Angleton, Texas</p>
         <h1>Quality That Sticks. Designs That Pop.</h1>
         <p class="hero-copy">
           Custom stickers, small vinyl decals, hard-hat marks, product labels, and storefront
@@ -1472,7 +1470,7 @@
 
   <footer id="footer" class="footer glass">
     <div>
-      <p>Copyright 2026 Gulf Coast Sticker Solutions. Angleton, Texas.</p>
+      <p>Copyright 2026 Gulf Coast Sticker Solutions. Angleton, Texas. <a class="terms-link" href="#terms">Terms &amp; Conditions</a></p>
       <p class="call-line">Feel free to give me a call anytime: <a href="tel:18328579181">832-857-9181</a></p>
     </div>
 
@@ -1530,6 +1528,10 @@
         button.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
         button.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
       });
+    });
+
+    document.querySelectorAll("#sticker-gallery img").forEach((image) => {
+      image.addEventListener("contextmenu", (event) => event.preventDefault());
     });
 
     window.addEventListener("scroll", () => {
