@@ -1,1474 +1,1483 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gulf Coast Sticker Solutions</title>
-    <meta
-      name="description"
-      content="Custom die-cut stickers, vinyl decals, and business labels for Gulf Coast businesses in Angleton, Texas."
-    >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gulf Coast Sticker Solutions</title>
+  <meta name="description" content="Custom die-cut stickers, vinyl decals, and business labels for Gulf Coast businesses in Angleton, Texas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <style>
-      :root {
-        --navy: #071a3e;
-        --navy-glass: rgba(7, 26, 62, 0.44);
-        --ink: #061426;
-        --cream: #fff1dc;
-        --foam: #bce7dc;
-        --seafoam: #63c7b7;
-        --teal: #0d7e75;
-        --gold: #f7b432;
-        --orange: #e66f16;
-        --copper: #9d4f15;
-        --white-glass: rgba(255, 255, 255, 0.16);
-        --glass-border: rgba(255, 255, 255, 0.34);
-        --shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
-        --soft-shadow: 0 18px 48px rgba(7, 26, 62, 0.22);
+  <style>
+    :root {
+      --navy: #071a3e;
+      --ink: #061426;
+      --cream: #fff1dc;
+      --foam: #bce7dc;
+      --seafoam: #63c7b7;
+      --teal: #0d7e75;
+      --gold: #f7b432;
+      --orange: #e66f16;
+      --glass-border: rgba(255, 255, 255, 0.34);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: Inter, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 35%), rgba(255, 241, 220, 0.24), transparent 24rem),
+        linear-gradient(180deg, rgba(7, 26, 62, 0.1), rgba(7, 26, 62, 0.7));
+      content: "";
+      inset: 0;
+      pointer-events: none;
+      position: fixed;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .ocean-bg {
+      background:
+        radial-gradient(circle at 72% 18%, rgba(247, 180, 50, 0.8), transparent 14rem),
+        radial-gradient(circle at 24% 28%, rgba(99, 199, 183, 0.64), transparent 18rem),
+        linear-gradient(135deg, #071a3e 0%, #0b4560 45%, #0d7e75 100%);
+      inset: 0;
+      overflow: hidden;
+      position: fixed;
+      z-index: -3;
+    }
+
+    .ocean-video {
+      filter: brightness(50%) saturate(1.15) contrast(1.04);
+      height: 100%;
+      inset: 0;
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+
+    .ocean-bg::before {
+      background:
+        linear-gradient(180deg, rgba(7, 26, 62, 0.28), rgba(0, 0, 0, 0.5)),
+        radial-gradient(circle at 60% 30%, rgba(247, 180, 50, 0.18), transparent 28rem);
+      content: "";
+      inset: 0;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .ocean-bg::after {
+      animation: tideDrift 26s ease-in-out infinite alternate-reverse;
+      background: linear-gradient(100deg, transparent 0 24%, rgba(255, 241, 220, 0.22) 40%, transparent 58% 100%);
+      content: "";
+      height: 70vh;
+      left: -20vw;
+      position: absolute;
+      top: 34vh;
+      width: 150vw;
+      z-index: 2;
+    }
+
+    .current {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.68;
+      position: absolute;
+      z-index: 3;
+    }
+
+    .current-one {
+      animation: floatCurrent 16s ease-in-out infinite;
+      height: 42rem;
+      left: -8rem;
+      top: 18rem;
+      width: 72rem;
+    }
+
+    .current-two {
+      animation: floatCurrent 22s ease-in-out infinite reverse;
+      height: 34rem;
+      right: -10rem;
+      top: 4rem;
+      width: 56rem;
+    }
+
+    .current-three {
+      animation: floatCurrent 19s ease-in-out infinite;
+      bottom: -14rem;
+      height: 40rem;
+      left: 30%;
+      width: 70rem;
+    }
+
+    .light-orbit {
+      animation: pulseGlow 7s ease-in-out infinite alternate;
+      background: radial-gradient(circle, rgba(247, 180, 50, 0.42), transparent 62%);
+      height: 34rem;
+      position: absolute;
+      right: 8vw;
+      top: 12vh;
+      width: 34rem;
+      z-index: 3;
+    }
+
+    .glass {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07));
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+    }
+
+    .site-header {
+      align-items: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(7, 26, 62, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 0 0 22px 22px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+      display: grid;
+      gap: 20px;
+      grid-template-columns: auto 1fr auto;
+      left: clamp(12px, 3vw, 42px);
+      padding: 12px 16px;
+      position: fixed;
+      right: clamp(12px, 3vw, 42px);
+      top: 0;
+      transition: background 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+      z-index: 50;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(7, 26, 62, 0.58);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .brand {
+      align-items: center;
+      display: inline-flex;
+      gap: 12px;
+      min-width: 238px;
+    }
+
+    .brand img {
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
+      height: 58px;
+      object-fit: cover;
+      width: 58px;
+    }
+
+    .brand strong,
+    .brand em {
+      display: block;
+      line-height: 1.05;
+    }
+
+    .brand strong {
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .brand em {
+      color: var(--foam);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 26px;
+      justify-content: center;
+    }
+
+    .nav a,
+    .quote-link {
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      color: rgba(255, 241, 220, 0.76);
+    }
+
+    .nav a:hover {
+      color: var(--cream);
+    }
+
+    .quote-link {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      border-radius: 999px;
+      box-shadow: 0 0 32px rgba(247, 180, 50, 0.34);
+      color: var(--navy);
+      padding: 14px 18px;
+    }
+
+    .section-shell {
+      padding: clamp(92px, 12vw, 160px) clamp(18px, 6vw, 88px);
+      position: relative;
+    }
+
+    .hero {
+      align-items: center;
+      display: grid;
+      gap: clamp(28px, 6vw, 76px);
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
+      min-height: 100vh;
+      padding-top: 140px;
+    }
+
+    .hero > * {
+      min-width: 0;
+    }
+
+    .hero-panel {
+      border-radius: 34px;
+      overflow: hidden;
+      padding: clamp(24px, 5vw, 58px);
+      transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0);
+    }
+
+    .hero-logo {
+      border-radius: 28px;
+      display: block;
+      height: auto;
+      margin-bottom: 28px;
+      max-width: 360px;
+      object-fit: contain;
+      width: min(60vw, 360px);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      margin: 0 0 14px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      letter-spacing: 0;
+      line-height: 0.92;
+      margin: 0;
+      overflow-wrap: anywhere;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--cream);
+      font-size: clamp(62px, 11vw, 148px);
+      max-width: 900px;
+      text-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    }
+
+    h2 {
+      color: var(--cream);
+      font-size: clamp(44px, 7vw, 86px);
+    }
+
+    h3 {
+      color: var(--cream);
+      font-size: clamp(32px, 4vw, 48px);
+    }
+
+    .hero-copy,
+    .intro-card p,
+    .service-card p {
+      color: rgba(255, 241, 220, 0.86);
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 650;
+      line-height: 1.55;
+      margin: 24px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .catalog-button,
+    .ghost-button {
+      align-items: center;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      font-size: 14px;
+      font-weight: 950;
+      justify-content: center;
+      min-height: 56px;
+      overflow: hidden;
+      padding: 16px 24px;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .catalog-button {
+      background: linear-gradient(135deg, var(--gold), var(--orange), var(--gold));
+      background-size: 220% 220%;
+      box-shadow: 0 0 34px rgba(247, 180, 50, 0.42), 0 16px 44px rgba(230, 111, 22, 0.3);
+      color: var(--navy);
+    }
+
+    .catalog-button::before {
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.85), transparent 34%);
+      content: "";
+      height: 12rem;
+      left: var(--ripple-x, 50%);
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: var(--ripple-y, 50%);
+      transform: translate(-50%, -50%) scale(0.16);
+      transition: opacity 240ms ease, transform 500ms ease;
+      width: 12rem;
+    }
+
+    .catalog-button:hover {
+      animation: buttonCurrent 1.8s ease infinite;
+      box-shadow: 0 0 48px rgba(247, 180, 50, 0.68), 0 20px 58px rgba(230, 111, 22, 0.38);
+      transform: translateY(-6px);
+    }
+
+    .catalog-button:hover::before {
+      opacity: 0.42;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .ghost-button {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      color: var(--cream);
+    }
+
+    .quote-link,
+    .catalog-button,
+    .ghost-button,
+    .photo-card,
+    .placement-card,
+    .service-card,
+    .logo-showcase,
+    .intro-card,
+    .quote-panel {
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .quote-link:hover,
+    .ghost-button:hover,
+    .photo-card:hover,
+    .placement-card:hover,
+    .service-card:hover,
+    .logo-showcase:hover,
+    .intro-card:hover,
+    .quote-panel:hover {
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(99, 199, 183, 0.18);
+      transform: translateY(-6px);
+    }
+
+    .logo-showcase {
+      animation: floatLayer 6s ease-in-out infinite;
+      border-radius: 34px;
+      padding: clamp(18px, 3vw, 30px);
+      transform-style: preserve-3d;
+    }
+
+    .sticker-rim {
+      background:
+        radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.92), transparent 18%),
+        rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 34px;
+      box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.12);
+      padding: 12px;
+    }
+
+    .sticker-rim img {
+      border-radius: 28px;
+      display: block;
+      max-width: 100%;
+    }
+
+    .sticker-badges {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .sticker-badges button {
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      color: var(--cream);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 950;
+      min-height: 42px;
+      text-transform: uppercase;
+      transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+    }
+
+    .sticker-badges button:hover {
+      background: linear-gradient(135deg, rgba(247, 180, 50, 0.86), rgba(230, 111, 22, 0.86));
+      box-shadow: 0 14px 34px rgba(247, 180, 50, 0.22);
+      color: var(--navy);
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .catalog {
+      padding-top: clamp(70px, 10vw, 120px);
+    }
+
+    .intro-card,
+    .quote-panel {
+      border-radius: 34px;
+      margin: 0 auto;
+      max-width: 980px;
+      padding: clamp(24px, 5vw, 54px);
+      text-align: center;
+    }
+
+    .fish-scene {
+      align-items: center;
+      background: linear-gradient(135deg, rgba(7, 26, 62, 0.5), rgba(99, 199, 183, 0.22));
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 26px auto 0;
+      min-height: 60px;
+      overflow: hidden;
+      padding: 12px 20px;
+      position: relative;
+      width: min(100%, 560px);
+    }
+
+    .fish-scene strong {
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 950;
+      position: relative;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .fish {
+      animation: fishSwim 5.8s ease-in-out infinite;
+      color: var(--gold);
+      font-size: 36px;
+      font-weight: 950;
+      left: 18px;
+      line-height: 1;
+      position: absolute;
+      text-shadow: -12px 0 0 rgba(255, 241, 220, 0.88);
+      top: 10px;
+      transform: scaleX(1.25);
+    }
+
+    .bubble {
+      animation: bubbleRise 4.2s ease-in-out infinite;
+      background: rgba(188, 231, 220, 0.7);
+      border-radius: 50%;
+      height: 8px;
+      position: absolute;
+      width: 8px;
+    }
+
+    .bubble-one {
+      left: 22%;
+      top: 36px;
+    }
+
+    .bubble-two {
+      animation-delay: 700ms;
+      left: 72%;
+      top: 38px;
+    }
+
+    .bubble-three {
+      animation-delay: 1.4s;
+      left: 52%;
+      top: 40px;
+    }
+
+    .photo-gallery,
+    .placement-grid,
+    .services {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .photo-gallery {
+      padding-top: clamp(30px, 5vw, 70px);
+    }
+
+    .photo-card,
+    .placement-card,
+    .service-card {
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .photo-card {
+      min-height: 440px;
+    }
+
+    .photo-card img,
+    .mock-photo img,
+    .machine-photo img,
+    .vinyl-photo img {
+      display: block;
+      filter: saturate(1.08) contrast(1.06);
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .photo-card img {
+      aspect-ratio: 4 / 3;
+      height: 300px;
+    }
+
+    .photo-card div {
+      padding: 22px;
+    }
+
+    .photo-card span {
+      color: var(--gold);
+      display: block;
+      font-size: 12px;
+      font-weight: 950;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .photo-card strong {
+      color: var(--cream);
+      display: block;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .placement-gallery {
+      padding-top: clamp(34px, 6vw, 86px);
+    }
+
+    .placement-intro {
+      border-radius: 34px;
+      margin-bottom: 22px;
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .placement-intro p:not(.eyebrow) {
+      color: rgba(255, 241, 220, 0.82);
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 18px 0 0;
+      max-width: 920px;
+    }
+
+    .mock-photo {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mock-photo::after {
+      background: linear-gradient(180deg, transparent 34%, rgba(7, 26, 62, 0.48));
+      content: "";
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .window-decal,
+    .qr-decal,
+    .card-stamp {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: absolute;
+      z-index: 2;
+    }
+
+    .window-decal {
+      background: rgba(255, 241, 220, 0.78);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      color: var(--navy);
+      left: 9%;
+      padding: 14px 16px;
+      top: 14%;
+      transform: rotate(-2deg);
+    }
+
+    .window-decal strong,
+    .window-decal span,
+    .card-stamp strong,
+    .card-stamp span {
+      display: block;
+    }
+
+    .window-decal strong,
+    .card-stamp strong {
+      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      font-size: 28px;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .window-decal span,
+    .card-stamp span {
+      font-size: 11px;
+      font-weight: 950;
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+
+    .qr-decal {
+      background: rgba(255, 255, 255, 0.88);
+      border: 5px solid var(--cream);
+      bottom: 12%;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      color: var(--navy);
+      display: grid;
+      gap: 5px;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 10px;
+      right: 10%;
+      transform: rotate(2deg);
+      width: 104px;
+    }
+
+    .qr-decal span {
+      background:
+        linear-gradient(90deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%),
+        linear-gradient(0deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%);
+      height: 28px;
+    }
+
+    .qr-decal em {
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 950;
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+
+    .card-stamp {
+      background: linear-gradient(135deg, rgba(7, 26, 62, 0.9), rgba(13, 126, 117, 0.82));
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      bottom: 12%;
+      color: var(--cream);
+      left: 10%;
+      padding: 16px 18px;
+      transform: rotate(-4deg);
+    }
+
+    .placement-card h3,
+    .placement-card p {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .placement-card h3 {
+      font-size: 34px;
+      margin-top: 22px;
+    }
+
+    .placement-card p {
+      color: rgba(255, 241, 220, 0.82);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      margin: 10px 0 24px;
+    }
+
+    .services {
+      padding-top: clamp(50px, 8vw, 110px);
+    }
+
+    .service-card {
+      min-height: 360px;
+      padding: clamp(22px, 3vw, 34px);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .service-visual {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 24px;
+      box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08);
+      height: 170px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .machine-photo span,
+    .vinyl-photo span {
+      background: rgba(7, 26, 62, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      bottom: 14px;
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 950;
+      left: 14px;
+      padding: 8px 12px;
+      position: absolute;
+      text-transform: uppercase;
+    }
+
+    .label-examples {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 0.85fr;
+      padding: 18px;
+    }
+
+    .mini-label {
+      align-content: center;
+      background: rgba(255, 241, 220, 0.9);
+      border: 2px solid rgba(255, 255, 255, 0.78);
+      border-radius: 12px;
+      color: var(--navy);
+      display: grid;
+      padding: 12px;
+    }
+
+    .mini-label strong {
+      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
+      font-size: 24px;
+      line-height: 0.9;
+    }
+
+    .mini-label span {
+      font-size: 10px;
+      font-weight: 950;
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+
+    .label-one {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+    }
+
+    .label-two {
+      background:
+        linear-gradient(90deg, var(--navy) 20%, transparent 20% 35%, var(--navy) 35% 45%, transparent 45%),
+        var(--cream);
+    }
+
+    .label-three {
+      grid-column: 1 / -1;
+    }
+
+    .service-card span {
+      color: var(--gold);
+      display: block;
+      font-weight: 950;
+      margin-bottom: 28px;
+    }
+
+    .quote {
+      padding-top: clamp(44px, 8vw, 100px);
+    }
+
+    .quote-panel form {
+      display: grid;
+      gap: 16px;
+      margin: 32px auto 0;
+      max-width: 720px;
+      text-align: left;
+    }
+
+    .dimension-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .quote-panel form label {
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .quote-panel form input,
+    .quote-panel form select {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 18px;
+      color: var(--cream);
+      display: block;
+      margin-top: 8px;
+      min-height: 52px;
+      padding: 12px 14px;
+      width: 100%;
+    }
+
+    .quote-panel form input[type="file"] {
+      cursor: pointer;
+      padding: 14px;
+    }
+
+    .quote-panel form option {
+      color: var(--ink);
+    }
+
+    .quote-panel form input::placeholder {
+      color: rgba(255, 241, 220, 0.54);
+    }
+
+    .size-note {
+      color: rgba(255, 241, 220, 0.72);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.45;
+      margin: -2px 0 0;
+    }
+
+    .form-note {
+      color: var(--foam);
+      font-size: 14px;
+      font-weight: 850;
+      margin: 0;
+      text-align: center;
+    }
+
+    .footer {
+      align-items: center;
+      border-radius: 28px 28px 0 0;
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      margin: 0 clamp(12px, 3vw, 42px);
+      padding: 22px clamp(18px, 4vw, 38px);
+    }
+
+    .footer p {
+      color: rgba(255, 241, 220, 0.76);
+      font-size: 14px;
+      font-weight: 650;
+      margin: 0;
+    }
+
+    .footer .google-link,
+    .call-line a {
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .footer div {
+      display: grid;
+      gap: 8px;
+    }
+
+    .call-line {
+      color: var(--cream) !important;
+    }
+
+    .call-line a {
+      white-space: nowrap;
+    }
+
+    @keyframes tideDrift {
+      from {
+        transform: translate3d(-3vw, -2vh, 0) rotate(-4deg);
       }
 
-      * {
-        box-sizing: border-box;
+      to {
+        transform: translate3d(4vw, 3vh, 0) rotate(4deg);
+      }
+    }
+
+    @keyframes floatCurrent {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
       }
 
-      html {
-        scroll-behavior: smooth;
-        overflow-x: hidden;
+      50% {
+        transform: translate3d(5vw, -3vh, 0) rotate(10deg);
+      }
+    }
+
+    @keyframes pulseGlow {
+      from {
+        opacity: 0.35;
+        transform: scale(0.92);
       }
 
-      body {
-        background: var(--ink);
-        color: var(--cream);
-        font-family: Inter, Arial, sans-serif;
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;
+      to {
+        opacity: 0.8;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes floatLayer {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
       }
 
-      body::before {
-        background:
-          radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 35%), rgba(255, 241, 220, 0.24), transparent 24rem),
-          linear-gradient(180deg, rgba(7, 26, 62, 0.1), rgba(7, 26, 62, 0.7));
-        content: "";
-        inset: 0;
-        pointer-events: none;
-        position: fixed;
-        z-index: -1;
+      50% {
+        transform: translate3d(0, -16px, 0);
+      }
+    }
+
+    @keyframes buttonCurrent {
+      0%,
+      100% {
+        background-position: 0% 50%;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes fishSwim {
+      0%,
+      100% {
+        left: 16px;
+        transform: translateY(0) scaleX(1.25);
       }
 
-      button,
-      input,
-      select {
-        font: inherit;
+      50% {
+        left: calc(100% - 66px);
+        transform: translateY(-4px) scaleX(1.25);
+      }
+    }
+
+    @keyframes bubbleRise {
+      0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.8);
       }
 
-      .ocean-bg {
-        background:
-          radial-gradient(circle at 72% 18%, rgba(247, 180, 50, 0.8), transparent 14rem),
-          radial-gradient(circle at 24% 28%, rgba(99, 199, 183, 0.64), transparent 18rem),
-          linear-gradient(135deg, #071a3e 0%, #0b4560 45%, #0d7e75 100%);
-        inset: 0;
-        overflow: hidden;
-        position: fixed;
-        z-index: -3;
+      50% {
+        opacity: 0.8;
       }
 
-      .ocean-video {
-        filter: brightness(50%) saturate(1.15) contrast(1.04);
-        height: 100%;
-        inset: 0;
-        object-fit: cover;
-        position: absolute;
-        width: 100%;
-        z-index: 0;
+      100% {
+        opacity: 0;
+        transform: translateY(-22px) scale(1.25);
       }
+    }
 
-      .ocean-bg::before,
-      .ocean-bg::after,
-      .current {
-        content: "";
-        filter: blur(1px);
-        opacity: 0.68;
-        position: absolute;
-        transform-origin: center;
-        will-change: transform;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
+    }
 
-      .ocean-bg::before {
-        background:
-          linear-gradient(180deg, rgba(7, 26, 62, 0.28), rgba(0, 0, 0, 0.5)),
-          radial-gradient(circle at 60% 30%, rgba(247, 180, 50, 0.18), transparent 28rem);
-        filter: none;
-        inset: 0;
-        opacity: 1;
-        z-index: 1;
-      }
-
-      .ocean-bg::after {
-        animation: tideDrift 26s ease-in-out infinite alternate-reverse;
-        background: linear-gradient(100deg, transparent 0 24%, rgba(255, 241, 220, 0.22) 40%, transparent 58% 100%);
-        height: 70vh;
-        left: -20vw;
-        top: 34vh;
-        width: 150vw;
-        z-index: 2;
-      }
-
-      .current {
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 50%;
-        z-index: 3;
-      }
-
-      .current-one {
-        animation: floatCurrent 16s ease-in-out infinite;
-        height: 42rem;
-        left: -8rem;
-        top: 18rem;
-        width: 72rem;
-      }
-
-      .current-two {
-        animation: floatCurrent 22s ease-in-out infinite reverse;
-        height: 34rem;
-        right: -10rem;
-        top: 4rem;
-        width: 56rem;
-      }
-
-      .current-three {
-        animation: floatCurrent 19s ease-in-out infinite;
-        bottom: -14rem;
-        height: 40rem;
-        left: 30%;
-        width: 70rem;
-      }
-
-      .light-orbit {
-        animation: pulseGlow 7s ease-in-out infinite alternate;
-        background: radial-gradient(circle, rgba(247, 180, 50, 0.42), transparent 62%);
-        height: 34rem;
-        position: absolute;
-        right: 8vw;
-        top: 12vh;
-        width: 34rem;
-      }
-
-      .glass {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07));
-        border: 1px solid var(--glass-border);
-        box-shadow: var(--shadow);
-      }
-
+    @media (max-width: 980px) {
       .site-header {
-        align-items: center;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        background: rgba(7, 26, 62, 0.24);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 0 0 22px 22px;
-        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
-        display: grid;
-        gap: 20px;
-        grid-template-columns: auto 1fr auto;
-        left: clamp(12px, 3vw, 42px);
-        padding: 12px 16px;
-        position: fixed;
-        right: clamp(12px, 3vw, 42px);
-        top: 0;
-        transition: background 240ms ease, transform 240ms ease, box-shadow 240ms ease;
-        z-index: 50;
-      }
-
-      .site-header.is-scrolled {
-        background: rgba(7, 26, 62, 0.58);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-      }
-
-      .brand {
-        align-items: center;
-        display: inline-flex;
-        gap: 12px;
-        min-width: 238px;
-      }
-
-      .brand img {
-        aspect-ratio: 1;
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        border-radius: 50%;
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
-        height: 58px;
-        object-fit: cover;
-        width: 58px;
-      }
-
-      .brand strong,
-      .brand em {
-        display: block;
-        line-height: 1.05;
-      }
-
-      .brand strong {
-        font-size: 14px;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-
-      .brand em {
-        color: var(--foam);
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 700;
+        grid-template-columns: auto auto;
       }
 
       .nav {
-        display: flex;
-        gap: 26px;
-        justify-content: center;
+        display: none;
       }
 
-      .nav a,
-      .quote-link {
-        font-size: 13px;
-        font-weight: 900;
-        letter-spacing: 0;
-        text-transform: uppercase;
-      }
-
-      .nav a {
-        color: rgba(255, 241, 220, 0.76);
-      }
-
-      .nav a:hover {
-        color: var(--cream);
-      }
-
-      .quote-link {
-        background: linear-gradient(135deg, var(--gold), var(--orange));
-        border-radius: 999px;
-        box-shadow: 0 0 32px rgba(247, 180, 50, 0.34);
-        color: var(--navy);
-        padding: 14px 18px;
-      }
-
-      .section-shell {
-        padding: clamp(92px, 12vw, 160px) clamp(18px, 6vw, 88px);
-        position: relative;
-      }
-
-      .hero {
-        align-items: center;
-        display: grid;
-        gap: clamp(28px, 6vw, 76px);
-        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
-        min-height: 100vh;
-        padding-top: 140px;
-      }
-
-      .hero > * {
-        min-width: 0;
-      }
-
-      .hero-panel {
-        border-radius: 34px;
-        max-width: 100%;
-        overflow: hidden;
-        padding: clamp(24px, 5vw, 58px);
-        transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0);
-      }
-
-      .hero-logo {
-        border-radius: 28px;
-        display: block;
-        height: auto;
-        margin-bottom: 28px;
-        max-width: 360px;
-        object-fit: contain;
-        width: min(60vw, 360px);
-      }
-
-      .eyebrow {
-        color: var(--gold);
-        font-size: 13px;
-        font-weight: 900;
-        letter-spacing: 0;
-        margin: 0 0 14px;
-        text-transform: uppercase;
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: "Barlow Condensed", Impact, Arial, sans-serif;
-        letter-spacing: 0;
-        line-height: 0.92;
-        margin: 0;
-        max-width: 100%;
-        overflow-wrap: anywhere;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        color: var(--cream);
-        font-size: clamp(62px, 11vw, 148px);
-        max-width: 900px;
-        text-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
-      }
-
-      h2 {
-        color: var(--cream);
-        font-size: clamp(44px, 7vw, 86px);
-      }
-
-      h3 {
-        color: var(--cream);
-        font-size: clamp(32px, 4vw, 48px);
-      }
-
-      .hero-copy,
-      .intro-card p,
-      .service-card p {
-        color: rgba(255, 241, 220, 0.86);
-        font-size: clamp(17px, 2vw, 22px);
-        font-weight: 650;
-        line-height: 1.55;
-        margin: 24px 0 0;
-        overflow-wrap: anywhere;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 34px;
-      }
-
-      .catalog-button,
-      .ghost-button {
-        align-items: center;
-        border: 0;
-        border-radius: 999px;
-        cursor: pointer;
-        display: inline-flex;
-        font-size: 14px;
-        font-weight: 950;
-        justify-content: center;
-        min-height: 56px;
-        overflow: hidden;
-        padding: 16px 24px;
-        position: relative;
-        text-transform: uppercase;
-      }
-
-      .catalog-button {
-        background: linear-gradient(135deg, var(--gold), var(--orange), var(--gold));
-        background-size: 220% 220%;
-        box-shadow: 0 0 34px rgba(247, 180, 50, 0.42), 0 16px 44px rgba(230, 111, 22, 0.3);
-        color: var(--navy);
-        transition: transform 220ms ease, box-shadow 220ms ease;
-      }
-
-      .catalog-button::before {
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.85), transparent 34%);
-        content: "";
-        height: 12rem;
-        left: var(--ripple-x, 50%);
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        top: var(--ripple-y, 50%);
-        transform: translate(-50%, -50%) scale(0.16);
-        transition: opacity 240ms ease, transform 500ms ease;
-        width: 12rem;
-      }
-
-      .catalog-button:hover {
-        animation: buttonCurrent 1.8s ease infinite;
-        box-shadow: 0 0 48px rgba(247, 180, 50, 0.68), 0 20px 58px rgba(230, 111, 22, 0.38);
-        transform: translateY(-3px);
-      }
-
-      .catalog-button:hover::before {
-        opacity: 0.42;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      .ghost-button {
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.32);
-        color: var(--cream);
-      }
-
-      .quote-link:hover,
-      .catalog-button:hover,
-      .ghost-button:hover,
-      .photo-card:hover,
-      .placement-card:hover,
-      .service-card:hover,
-      .logo-showcase:hover,
-      .intro-card:hover,
-      .quote-panel:hover {
-        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(99, 199, 183, 0.18);
-        transform: translateY(-6px);
-      }
-
-      .quote-link,
-      .catalog-button,
-      .ghost-button,
-      .photo-card,
-      .placement-card,
-      .service-card,
-      .logo-showcase,
-      .intro-card,
-      .quote-panel {
-        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+      .hero,
+      .photo-gallery,
+      .placement-grid,
+      .services {
+        grid-template-columns: 1fr;
       }
 
       .logo-showcase {
-        animation: floatLayer 6s ease-in-out infinite;
-        border-radius: 34px;
-        max-width: 100%;
-        padding: clamp(18px, 3vw, 30px);
-        transform-style: preserve-3d;
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        gap: 10px;
+        grid-template-columns: auto auto;
+        left: 14px;
+        padding: 8px;
+        right: 14px;
       }
 
-      .sticker-rim {
-        background:
-          radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.92), transparent 18%),
-          rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.32);
-        border-radius: 34px;
-        box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.12);
-        padding: 12px;
+      .brand {
+        min-width: 0;
       }
 
-      .sticker-rim img {
-        border-radius: 28px;
-        display: block;
-        max-width: 100%;
+      .brand img {
+        height: 46px;
+        width: 46px;
       }
 
-      .logo-showcase p {
-        color: var(--cream);
-        font-size: 16px;
-        font-weight: 850;
-        margin: 22px 0 0;
-        overflow-wrap: anywhere;
+      .brand span {
+        display: none;
       }
 
-      .catalog {
-        padding-top: clamp(70px, 10vw, 120px);
-      }
-
-      .photo-gallery {
-        display: grid;
-        gap: 22px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding-top: clamp(30px, 5vw, 70px);
-      }
-
-      .placement-gallery {
-        padding-top: clamp(34px, 6vw, 86px);
-      }
-
-      .placement-intro {
-        border-radius: 34px;
-        margin-bottom: 22px;
-        padding: clamp(22px, 4vw, 42px);
-      }
-
-      .placement-intro p:not(.eyebrow) {
-        color: rgba(255, 241, 220, 0.82);
-        font-size: clamp(17px, 2vw, 21px);
-        font-weight: 700;
-        line-height: 1.5;
-        margin: 18px 0 0;
-        max-width: 920px;
-      }
-
-      .placement-grid {
-        display: grid;
-        gap: 22px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .placement-card {
-        border-radius: 30px;
-        overflow: hidden;
-        transition: transform 220ms ease, box-shadow 220ms ease;
-      }
-
-      .placement-card:hover {
-        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(247, 180, 50, 0.16);
-        transform: translateY(-8px);
-      }
-
-      .mock-photo {
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .mock-photo img {
-        display: block;
-        filter: saturate(1.08) contrast(1.04);
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .mock-photo::after {
-        background: linear-gradient(180deg, transparent 34%, rgba(7, 26, 62, 0.48));
-        content: "";
-        inset: 0;
-        pointer-events: none;
-        position: absolute;
-      }
-
-      .window-decal,
-      .qr-decal,
-      .card-stamp {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        position: absolute;
-        z-index: 2;
-      }
-
-      .window-decal {
-        background: rgba(255, 241, 220, 0.78);
-        border: 2px solid rgba(255, 255, 255, 0.9);
-        color: var(--navy);
-        left: 9%;
-        padding: 14px 16px;
-        top: 14%;
-        transform: rotate(-2deg);
-      }
-
-      .window-decal strong,
-      .window-decal span,
-      .card-stamp strong,
-      .card-stamp span {
-        display: block;
-      }
-
-      .window-decal strong,
-      .card-stamp strong {
-        font-family: "Barlow Condensed", Impact, Arial, sans-serif;
-        font-size: 28px;
-        line-height: 0.9;
-        text-transform: uppercase;
-      }
-
-      .window-decal span,
-      .card-stamp span {
-        font-size: 11px;
-        font-weight: 950;
-        margin-top: 5px;
-        text-transform: uppercase;
-      }
-
-      .qr-decal {
-        background: rgba(255, 255, 255, 0.88);
-        border: 5px solid var(--cream);
-        bottom: 12%;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-        color: var(--navy);
-        display: grid;
-        gap: 5px;
-        grid-template-columns: repeat(2, 1fr);
-        padding: 10px;
-        right: 10%;
-        transform: rotate(2deg);
-        width: 104px;
-      }
-
-      .qr-decal span {
-        background:
-          linear-gradient(90deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%),
-          linear-gradient(0deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%);
-        height: 28px;
-      }
-
-      .qr-decal em {
-        font-size: 10px;
-        font-style: normal;
-        font-weight: 950;
-        grid-column: 1 / -1;
-        text-align: center;
-      }
-
-      .card-stamp {
-        background: linear-gradient(135deg, rgba(7, 26, 62, 0.9), rgba(13, 126, 117, 0.82));
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        bottom: 12%;
-        color: var(--cream);
-        left: 10%;
-        padding: 16px 18px;
-        transform: rotate(-4deg);
-      }
-
-      .placement-card h3,
-      .placement-card p {
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      .placement-card h3 {
-        font-size: 34px;
-        margin-top: 22px;
-      }
-
-      .placement-card p {
-        color: rgba(255, 241, 220, 0.82);
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 1.45;
-        margin: 10px 0 24px;
-      }
-
-      .photo-card {
-        border-radius: 30px;
-        min-height: 440px;
-        overflow: hidden;
-        transform: translateY(0);
-        transition: transform 220ms ease, box-shadow 220ms ease;
-      }
-
-      .photo-card:hover {
-        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(99, 199, 183, 0.2);
-        transform: translateY(-8px);
-      }
-
-      .photo-card img {
-        aspect-ratio: 4 / 3;
-        display: block;
-        filter: saturate(1.08) contrast(1.04);
-        height: 300px;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .photo-card div {
-        padding: 22px;
-      }
-
-      .photo-card span {
-        color: var(--gold);
-        display: block;
+      .quote-link {
         font-size: 12px;
-        font-weight: 950;
-        margin-bottom: 10px;
-        text-transform: uppercase;
+        padding: 10px 11px;
       }
 
-      .photo-card strong {
-        color: var(--cream);
+      .section-shell {
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero {
         display: block;
-        font-size: 20px;
-        line-height: 1.25;
+        padding-top: 118px;
       }
 
-      .intro-card,
-      .quote-panel {
-        border-radius: 34px;
-        margin: 0 auto;
-        max-width: 980px;
-        padding: clamp(24px, 5vw, 54px);
-        text-align: center;
+      .hero-panel {
+        transform: none !important;
       }
 
-      .services {
-        display: grid;
-        gap: 22px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding-top: clamp(50px, 8vw, 110px);
-      }
-
-      .service-card {
-        border-radius: 30px;
-        min-height: 360px;
-        padding: clamp(22px, 3vw, 34px);
-        transform-style: preserve-3d;
-        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-        will-change: transform;
-      }
-
-      .service-visual {
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.24);
-        border-radius: 24px;
-        box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08);
-        height: 170px;
-        margin-bottom: 24px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .cutter-visual {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-      }
-
-      .cutter-body {
-        background: linear-gradient(180deg, rgba(255, 241, 220, 0.9), rgba(188, 231, 220, 0.7));
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        border-radius: 16px;
-        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
-        height: 72px;
-        position: relative;
-        width: 82%;
-      }
-
-      .cutter-brand {
-        color: var(--navy);
-        font-size: 11px;
-        font-weight: 950;
-        left: 18px;
-        position: absolute;
-        text-transform: uppercase;
-        top: 13px;
-      }
-
-      .cutter-slot {
-        background: var(--navy);
-        border-radius: 999px;
-        bottom: 18px;
-        height: 9px;
-        left: 18px;
-        position: absolute;
-        right: 18px;
-      }
-
-      .vinyl-feed {
-        background: linear-gradient(90deg, var(--foam), var(--seafoam));
-        bottom: -28px;
-        height: 32px;
-        left: 15%;
-        position: absolute;
-        width: 70%;
-      }
-
-      .cut-sheet {
-        bottom: 14px;
-        display: flex;
-        gap: 8px;
-        left: 50%;
-        position: absolute;
-        transform: translateX(-50%);
-      }
-
-      .cut-sheet span {
-        background: var(--gold);
-        border-radius: 50%;
-        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.46);
-        height: 24px;
-        width: 24px;
-      }
-
-      .label-examples {
-        display: grid;
-        gap: 12px;
-        grid-template-columns: 1fr 0.85fr;
-        padding: 18px;
-      }
-
-      .mini-label {
-        align-content: center;
-        background: rgba(255, 241, 220, 0.9);
-        border: 2px solid rgba(255, 255, 255, 0.78);
-        border-radius: 12px;
-        color: var(--navy);
-        display: grid;
-        padding: 12px;
-      }
-
-      .mini-label strong {
-        font-family: "Barlow Condensed", Impact, Arial, sans-serif;
-        font-size: 24px;
-        line-height: 0.9;
-      }
-
-      .mini-label span {
-        font-size: 10px;
-        font-weight: 950;
-        margin-top: 5px;
-        text-transform: uppercase;
-      }
-
-      .label-one {
-        background: linear-gradient(135deg, var(--gold), var(--orange));
-      }
-
-      .label-two {
-        background:
-          linear-gradient(90deg, var(--navy) 20%, transparent 20% 35%, var(--navy) 35% 45%, transparent 45%),
-          var(--cream);
-      }
-
-      .label-three {
-        grid-column: 1 / -1;
-      }
-
-      .service-card:hover {
-        border-color: rgba(255, 241, 220, 0.66);
-        box-shadow: 0 32px 98px rgba(0, 0, 0, 0.38), 0 0 42px rgba(99, 199, 183, 0.18);
-      }
-
-      .service-card span {
-        color: var(--gold);
-        display: block;
-        font-weight: 950;
-        margin-bottom: 28px;
-      }
-
-      .quote {
-        padding-top: clamp(44px, 8vw, 100px);
-      }
-
-      .quote-form {
-        display: grid;
-        gap: 16px;
-        margin: 32px auto 0;
-        max-width: 720px;
-        text-align: left;
-      }
-
-      .dimension-grid {
-        display: grid;
-        gap: 14px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .quote-form label {
-        color: var(--cream);
-        font-size: 12px;
-        font-weight: 950;
-        text-transform: uppercase;
-      }
-
-      .quote-form input,
-      .quote-form select {
-        background: rgba(255, 255, 255, 0.14);
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        border-radius: 18px;
-        color: var(--cream);
-        display: block;
-        margin-top: 8px;
-        min-height: 52px;
-        padding: 12px 14px;
+      .logo-showcase {
+        margin-top: 18px;
         width: 100%;
       }
 
-      .quote-form option {
-        color: var(--ink);
+      .hero-logo {
+        max-width: 260px;
+        width: 100%;
       }
 
-      .quote-form input::placeholder {
-        color: rgba(255, 241, 220, 0.54);
+      h1 {
+        font-size: 40px;
+        line-height: 0.98;
+        max-width: 280px;
       }
 
-      .size-note {
-        color: rgba(255, 241, 220, 0.72);
-        font-size: 13px;
-        font-weight: 750;
-        line-height: 1.45;
-        margin: -2px 0 0;
+      .hero-copy {
+        max-width: 280px;
       }
 
-      .form-note {
-        color: var(--foam);
-        font-size: 14px;
-        font-weight: 850;
-        margin: 0;
-        text-align: center;
+      h2 {
+        font-size: 46px;
       }
 
-      .footer {
-        align-items: center;
-        border-radius: 28px 28px 0 0;
-        display: flex;
-        gap: 18px;
-        justify-content: space-between;
-        margin: 0 clamp(12px, 3vw, 42px);
-        padding: 22px clamp(18px, 4vw, 38px);
+      .hero-actions,
+      .footer,
+      .dimension-grid,
+      .sticker-badges {
+        align-items: stretch;
+        flex-direction: column;
+        grid-template-columns: 1fr;
       }
 
-      .footer p {
-        color: rgba(255, 241, 220, 0.76);
-        font-size: 14px;
-        font-weight: 650;
-        margin: 0;
+      .catalog-button,
+      .ghost-button {
+        width: 100%;
       }
+    }
+  </style>
+</head>
 
-      .footer .google-link,
-      .call-line a {
-        color: var(--gold);
-        font-size: 14px;
-        font-weight: 950;
-        text-transform: uppercase;
-      }
+<body>
+  <div class="ocean-bg" aria-hidden="true">
+    <video class="ocean-video" autoplay muted loop playsinline preload="metadata">
+      <source src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Aerial_view_of_sand_beach._Top_view_sea_waves._Drone_footage.webm" type="video/webm">
+    </video>
+    <div class="current current-one"></div>
+    <div class="current current-two"></div>
+    <div class="current current-three"></div>
+    <div class="light-orbit"></div>
+  </div>
 
-      .footer div {
-        display: grid;
-        gap: 8px;
-      }
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Gulf Coast Sticker Solutions home">
+      <img src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
+      <span>
+        <strong>Gulf Coast</strong>
+        <em>Sticker Solutions</em>
+      </span>
+    </a>
 
-      .call-line {
-        color: var(--cream) !important;
-      }
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#catalog">Catalog</a>
+      <a href="#services">Services</a>
+      <a href="#footer">Google</a>
+    </nav>
 
-      .call-line a {
-        white-space: nowrap;
-      }
+    <a class="quote-link" href="#quote">Get a Quote</a>
+  </header>
 
-      @keyframes tideDrift {
-        from {
-          transform: translate3d(-3vw, -2vh, 0) rotate(-4deg);
-        }
-        to {
-          transform: translate3d(4vw, 3vh, 0) rotate(4deg);
-        }
-      }
+  <main id="top">
+    <section class="hero section-shell" data-depth="0.18">
+      <div class="glass hero-panel">
+        <img class="hero-logo" src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
+        <p class="eyebrow">Angleton, Texas | Gulf Coast made</p>
+        <h1>Quality That Sticks. Designs That Pop.</h1>
+        <p class="hero-copy">
+          Custom stickers, small vinyl decals, hard-hat marks, product labels, and storefront
+          lettering with polished coastal style and shop-grade durability.
+        </p>
 
-      @keyframes floatCurrent {
-        0%,
-        100% {
-          transform: translate3d(0, 0, 0) rotate(0deg);
-        }
-        50% {
-          transform: translate3d(5vw, -3vh, 0) rotate(10deg);
-        }
-      }
+        <div class="hero-actions">
+          <a class="catalog-button" href="#catalog">
+            <span>View Our Catalog</span>
+          </a>
+          <a class="ghost-button" href="#quote">Start a quote</a>
+        </div>
+      </div>
 
-      @keyframes pulseGlow {
-        from {
-          opacity: 0.35;
-          transform: scale(0.92);
-        }
-        to {
-          opacity: 0.8;
-          transform: scale(1.08);
-        }
-      }
-
-      @keyframes floatLayer {
-        0%,
-        100% {
-          transform: translate3d(0, 0, 0);
-        }
-        50% {
-          transform: translate3d(0, -16px, 0);
-        }
-      }
-
-      @keyframes buttonCurrent {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          scroll-behavior: auto !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      @media (max-width: 980px) {
-        .site-header {
-          grid-template-columns: auto auto;
-        }
-
-        .nav {
-          display: none;
-        }
-
-        .hero {
-          grid-template-columns: 1fr;
-        }
-
-        .services,
-        .photo-gallery,
-        .placement-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .logo-showcase {
-          max-width: 620px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .site-header {
-          gap: 10px;
-          grid-template-columns: auto auto;
-          left: 14px;
-          padding: 8px;
-          right: 14px;
-        }
-
-        .brand {
-          min-width: 0;
-        }
-
-        .brand img {
-          height: 46px;
-          width: 46px;
-        }
-
-        .brand span {
-          display: none;
-        }
-
-        .quote-link {
-          font-size: 12px;
-          padding: 10px 11px;
-        }
-
-        .section-shell {
-          max-width: 100vw;
-          overflow-x: hidden;
-          padding-left: 16px;
-          padding-right: 16px;
-          width: auto;
-        }
-
-        .hero {
-          display: block;
-          padding-top: 118px;
-        }
-
-        .hero-panel {
-          max-width: 100%;
-          transform: none !important;
-          width: auto;
-        }
-
-        .logo-showcase {
-          margin-top: 18px;
-          width: 100%;
-        }
-
-        .hero-logo {
-          max-width: 260px;
-          width: 100%;
-        }
-
-        h1 {
-          font-size: 40px;
-          line-height: 0.98;
-          max-width: 280px;
-        }
-
-        .hero-copy {
-          max-width: 280px;
-        }
-
-        h2 {
-          font-size: 46px;
-        }
-
-        .hero-actions,
-        .footer,
-        .dimension-grid {
-          align-items: stretch;
-          flex-direction: column;
-          grid-template-columns: 1fr;
-        }
-
-        .catalog-button,
-        .ghost-button {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="ocean-bg" aria-hidden="true">
-      <video class="ocean-video" autoplay muted loop playsinline preload="metadata">
-        <source
-          src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Aerial_view_of_sand_beach._Top_view_sea_waves._Drone_footage.webm"
-          type="video/webm"
-        >
-      </video>
-      <div class="current current-one"></div>
-      <div class="current current-two"></div>
-      <div class="current current-three"></div>
-      <div class="light-orbit"></div>
-    </div>
-
-    <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Gulf Coast Sticker Solutions home">
-        <img src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
-        <span>
-          <strong>Gulf Coast</strong>
-          <em>Sticker Solutions</em>
-        </span>
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#catalog">Catalog</a>
-        <a href="#services">Services</a>
-        <a href="#footer">Google</a>
-      </nav>
-      <a class="quote-link" href="#quote">Get a Quote</a>
-    </header>
-
-    <main id="top">
-      <section class="hero section-shell" data-depth="0.18">
-        <div class="glass hero-panel">
-          <img class="hero-logo" src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
-          <p class="eyebrow">Angleton, Texas | Gulf Coast made</p>
-          <h1>Quality That Sticks. Designs That Pop.</h1>
-          <p class="hero-copy">
-            Custom stickers, small vinyl decals, hard-hat marks, product labels, and storefront
-            lettering with polished coastal style and shop-grade durability.
-          </p>
-          <div class="hero-actions">
-            <a class="catalog-button" href="#catalog">
-              <span>View Our Catalog</span>
-            </a>
-            <a class="ghost-button" href="#quote">Start a quote</a>
-          </div>
+      <div class="depth-card logo-showcase glass" data-depth="0.32">
+        <div class="sticker-rim">
+          <img src="./logo.png" alt="">
         </div>
 
-        <div class="depth-card logo-showcase glass" data-depth="0.32">
-          <div class="sticker-rim">
-            <img src="./logo.png" alt="">
-          </div>
-          <p>Glossy coastal decals built for helmets, windows, gear, packaging, and labels.</p>
+        <div class="sticker-badges" aria-label="Interactive decal uses">
+          <button type="button">Helmet marks</button>
+          <button type="button">Glass decals</button>
+          <button type="button">Gear labels</button>
+          <button type="button">Packaging</button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="catalog" class="catalog section-shell" data-depth="0.12">
-        <div class="glass intro-card">
-          <p class="eyebrow">The catalog starts here</p>
-          <h2>Pick Your Finish, Catch The Current</h2>
-          <p>
-            Every order starts with the surface, size, and finish. Choose clean white vinyl,
-            bold color, gloss laminate, or simple one-color work marks. Best fit: small and
-            medium decals, labels, hard-hat marks, windows, gear, and packaging.
-          </p>
+    <section id="catalog" class="catalog section-shell" data-depth="0.12">
+      <div class="glass intro-card">
+        <p class="eyebrow">The catalog starts here</p>
+        <h2>Pick Your Finish, Catch The Current</h2>
+        <p>
+          Every order starts with the surface, size, and finish. Choose clean white vinyl,
+          bold color, gloss laminate, or simple one-color work marks. Best fit: small and
+          medium decals, labels, hard-hat marks, windows, gear, and packaging.
+        </p>
+
+        <div class="fish-scene" aria-label="Animated Gulf Coast finish preview">
+          <span class="fish">></span>
+          <span class="bubble bubble-one"></span>
+          <span class="bubble bubble-two"></span>
+          <span class="bubble bubble-three"></span>
+          <strong>Gloss | Matte | Clear | Reflective</strong>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="photo-gallery section-shell" aria-label="Clear decal example photos">
-        <article class="photo-card glass">
-          <img
-            src="https://images.pexels.com/photos/16605272/pexels-photo-16605272.jpeg?auto=compress&cs=tinysrgb&w=1100"
-            alt="Close-up of colorful die-cut stickers on a white sheet"
-          >
-          <div>
-            <span>Die-cut sticker sheets</span>
-            <strong>Sharp edges, glossy color, clean detail.</strong>
-          </div>
-        </article>
-
-        <article class="photo-card glass">
-          <img
-            src="https://images.pexels.com/photos/8947553/pexels-photo-8947553.jpeg?auto=compress&cs=tinysrgb&w=1100"
-            alt="Blue product jar with a clean blank label"
-          >
-          <div>
-            <span>Product labels</span>
-            <strong>Small-batch packaging that looks finished.</strong>
-          </div>
-        </article>
-
-        <article class="photo-card glass">
-          <img
-            src="https://images.pexels.com/photos/16605271/pexels-photo-16605271.jpeg?auto=compress&cs=tinysrgb&w=1100"
-            alt="Clear sticker sheets with bright colorful artwork"
-          >
-          <div>
-            <span>Clear decal options</span>
-            <strong>Great for windows, displays, laptops, and gear.</strong>
-          </div>
-        </article>
-      </section>
-
-      <section class="placement-gallery section-shell" aria-label="Storefront, public QR decal, and playing card examples">
-        <div class="glass placement-intro">
-          <p class="eyebrow">More ways to stick out</p>
-          <h2>Storefronts, QR Decals, Public Spaces, And Custom Cards</h2>
-          <p>
-            Clean small-format decals are perfect for doors, counters, pop-up booths, checkout
-            areas, public-facing instructions, and specialty items like custom playing cards.
-          </p>
+    <section class="photo-gallery section-shell" aria-label="Clear decal example photos">
+      <article class="photo-card glass">
+        <img src="https://images.pexels.com/photos/13537097/pexels-photo-13537097.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional die-cut sticker sheet with glossy printed decals">
+        <div>
+          <span>Die-cut sticker sheets</span>
+          <strong>Sharp edges, glossy color, clean detail.</strong>
         </div>
+      </article>
 
-        <div class="placement-grid">
-          <article class="placement-card glass">
-            <div class="mock-photo">
-              <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=80"
-                alt="Retail storefront with glass windows"
-              >
-              <div class="window-decal">
-                <strong>GULF COAST</strong>
-                <span>Hours | Logo | Door Lettering</span>
-              </div>
-            </div>
-            <h3>Storefront Glass</h3>
-            <p>Door logos, hours, entrance decals, QR review prompts, and clean window lettering.</p>
-          </article>
-
-          <article class="placement-card glass">
-            <div class="mock-photo">
-              <img
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=80"
-                alt="Public restaurant and cafe interior"
-              >
-              <div class="qr-decal" aria-label="Mock QR code decal">
-                <span></span><span></span><span></span><span></span>
-                <em>SCAN MENU</em>
-              </div>
-            </div>
-            <h3>Public QR Decals</h3>
-            <p>Menu codes, review links, payment prompts, sign-up forms, and event check-ins.</p>
-          </article>
-
-          <article class="placement-card glass">
-            <div class="mock-photo">
-              <img
-                src="https://images.pexels.com/photos/8762318/pexels-photo-8762318.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                alt="Close-up of playing cards"
-              >
-              <div class="card-stamp">
-                <strong>Custom</strong>
-                <span>Playing Cards</span>
-              </div>
-            </div>
-            <h3>Custom Playing Cards</h3>
-            <p>Branded card backs, novelty decks, promo cards, party sets, and local merch ideas.</p>
-          </article>
+      <article class="photo-card glass">
+        <img src="https://images.pexels.com/photos/8947553/pexels-photo-8947553.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Blue product jar with a clean blank label">
+        <div>
+          <span>Product labels</span>
+          <strong>Small-batch packaging that looks finished.</strong>
         </div>
-      </section>
+      </article>
 
-      <section id="services" class="services section-shell">
-        <article class="service-card glass" data-tilt>
-          <div class="service-visual cutter-visual" aria-label="Roland-style vinyl cutter illustration">
-            <div class="cutter-body">
-              <span class="cutter-brand">Roland style cutter</span>
-              <span class="cutter-slot"></span>
-              <span class="vinyl-feed"></span>
-            </div>
-            <div class="cut-sheet">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <span>01</span>
-          <h3>Custom Die-Cut</h3>
-          <p>
-            Logo stickers, mascot cuts, event decals, and promotional pieces shaped around the
-            artwork instead of boxed into a boring rectangle.
-          </p>
-        </article>
-
-        <article class="service-card glass" data-tilt>
-          <span>02</span>
-          <h3>Vinyl Decals</h3>
-          <p>
-            Storefront glass, toolboxes, helmets, job boxes, laptops, small equipment panels,
-            and clean identifiers. Built for small-to-medium work, not full vehicle wraps.
-          </p>
-        </article>
-
-        <article class="service-card glass" data-tilt>
-          <div class="service-visual label-examples" aria-label="Business label examples">
-            <div class="mini-label label-one">
-              <strong>WARNING</strong>
-              <span>Equipment ID</span>
-            </div>
-            <div class="mini-label label-two">
-              <strong>QR</strong>
-              <span>Scan Menu</span>
-            </div>
-            <div class="mini-label label-three">
-              <strong>LOCAL</strong>
-              <span>Product Label</span>
-            </div>
-          </div>
-          <span>03</span>
-          <h3>Business Labels</h3>
-          <p>
-            Product labels, QR labels, warning labels, shop stickers, and small-batch brand
-            pieces that make your packaging feel finished.
-          </p>
-        </article>
-      </section>
-
-      <section id="quote" class="quote section-shell">
-        <div class="glass quote-panel">
-          <p class="eyebrow">Fast local quote</p>
-          <h2>Tell Us Where It Sticks</h2>
-
-          <form action="https://formspree.io/f/xykoneea" method="POST" class="quote-form">
-            <label>
-              Project type
-              <select name="project_type">
-                <option>Custom Die-Cut</option>
-                <option>Vinyl Decal</option>
-                <option>Business Labels</option>
-              </select>
-            </label>
-
-            <label>
-              Email
-              <input type="email" name="email" placeholder="Your Email" required>
-            </label>
-
-            <label>
-              Surface
-              <input name="surface" type="text" placeholder="Truck, hard hat, window, product bag">
-            </label>
-
-            <label>
-              Quantity
-              <input name="quantity" type="number" min="1" placeholder="25">
-            </label>
-
-            <div class="dimension-grid" aria-label="Sticker dimensions">
-              <label>
-                Width
-                <input name="width" type="number" min="0.5" step="0.25" placeholder="4">
-              </label>
-
-              <label>
-                Height
-                <input name="height" type="number" min="0.5" step="0.25" placeholder="3">
-              </label>
-
-              <label>
-                Units
-                <select name="units">
-                  <option>inches</option>
-                  <option>centimeters</option>
-                </select>
-              </label>
-            </div>
-
-            <p class="size-note">
-              Sweet spot: 2-12 inch decals and labels. Ask for larger storefront pieces, but
-              full vehicle wraps are outside the current focus.
-            </p>
-
-            <button class="catalog-button" type="submit">
-              <span>Send Quote Request</span>
-            </button>
-
-            <p class="form-note" aria-live="polite"></p>
-          </form>
+      <article class="photo-card glass">
+        <img src="https://images.pexels.com/photos/5204143/pexels-photo-5204143.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional clear vinyl decal applied to glass">
+        <div>
+          <span>Clear decal options</span>
+          <strong>Great for windows, displays, laptops, and gear.</strong>
         </div>
-      </section>
-    </main>
+      </article>
+    </section>
 
-    <footer id="footer" class="footer glass">
-      <div>
-        <p>Copyright 2026 Gulf Coast Sticker Solutions. Angleton, Texas.</p>
-        <p class="call-line">
-          Feel free to give me a call anytime:
-          <a href="tel:18328579181">832-857-9181</a>
+    <section class="placement-gallery section-shell" aria-label="Storefront, public QR decal, and playing card examples">
+      <div class="glass placement-intro">
+        <p class="eyebrow">More ways to stick out</p>
+        <h2>Storefronts, QR Decals, Public Spaces, And Custom Cards</h2>
+        <p>
+          Clean small-format decals are perfect for doors, counters, pop-up booths, checkout
+          areas, public-facing instructions, and specialty items like custom playing cards.
         </p>
       </div>
 
-      <a
-        class="google-link"
-        href="https://www.google.com/search?q=Gulf+Coast+Sticker+Solutions+Angleton+Texas"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Find us on Google
-      </a>
-    </footer>
+      <div class="placement-grid">
+        <article class="placement-card glass">
+          <div class="mock-photo">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=80" alt="Retail storefront with glass windows">
+            <div class="window-decal">
+              <strong>GULF COAST</strong>
+              <span>Hours | Logo | Door Lettering</span>
+            </div>
+          </div>
+          <h3>Storefront Glass</h3>
+          <p>Door logos, hours, entrance decals, QR review prompts, and clean window lettering.</p>
+        </article>
 
-    <script>
-      const header = document.querySelector("[data-header]");
-      const tiltCards = document.querySelectorAll("[data-tilt]");
-      const depthItems = document.querySelectorAll("[data-depth]");
-      const rippleButtons = document.querySelectorAll(".catalog-button");
+        <article class="placement-card glass">
+          <div class="mock-photo">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=80" alt="Public restaurant and cafe interior">
+            <div class="qr-decal" aria-label="Mock QR code decal">
+              <span></span><span></span><span></span><span></span>
+              <em>SCAN MENU</em>
+            </div>
+          </div>
+          <h3>Public QR Decals</h3>
+          <p>Menu codes, review links, payment prompts, sign-up forms, and event check-ins.</p>
+        </article>
 
-      function updateHeader() {
-        header.classList.toggle("is-scrolled", window.scrollY > 20);
-      }
+        <article class="placement-card glass">
+          <div class="mock-photo">
+            <img src="https://images.pexels.com/photos/8762318/pexels-photo-8762318.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Close-up of playing cards">
+            <div class="card-stamp">
+              <strong>Custom</strong>
+              <span>Playing Cards</span>
+            </div>
+          </div>
+          <h3>Custom Playing Cards</h3>
+          <p>Branded card backs, novelty decks, promo cards, party sets, and local merch ideas.</p>
+        </article>
+      </div>
+    </section>
 
-      function updatePointer(event) {
-        const x = `${event.clientX}px`;
-        const y = `${event.clientY}px`;
-        document.documentElement.style.setProperty("--cursor-x", x);
-        document.documentElement.style.setProperty("--cursor-y", y);
-      }
+    <section id="services" class="services section-shell">
+      <article class="service-card glass" data-tilt>
+        <div class="service-visual machine-photo" aria-label="Roland BN-20A printer/cutter">
+          <img src="https://image.rolanddg.com/-/media/roland-apac/mea/images/search/products/printers/eco-solvent/og_bn20.jpg?rev=6a96f17f19c64357a736a458c8643f44" alt="Roland VersaStudio BN-20A desktop printer cutter">
+          <span>Print + cut setup</span>
+        </div>
+        <span>01</span>
+        <h3>Custom Die-Cut</h3>
+        <p>
+          Logo stickers, mascot cuts, event decals, and promotional pieces shaped around the
+          artwork instead of boxed into a boring rectangle.
+        </p>
+      </article>
 
-      function updateParallax() {
-        const scroll = window.scrollY;
+      <article class="service-card glass" data-tilt>
+        <div class="service-visual vinyl-photo" aria-label="Premium vinyl roll">
+          <img src="https://cdn.pixabay.com/photo/2016/05/20/16/43/vinyl-1401390_1280.jpg" alt="Premium vinyl roll for decals">
+          <span>Premium vinyl film</span>
+        </div>
+        <span>02</span>
+        <h3>Vinyl Decals</h3>
+        <p>
+          Storefront glass, toolboxes, helmets, job boxes, laptops, small equipment panels,
+          and clean identifiers. Built for small-to-medium work, not full vehicle wraps.
+        </p>
+      </article>
 
-        depthItems.forEach((item) => {
-          const strength = Number(item.dataset.depth || 0.1);
-          const rect = item.getBoundingClientRect();
-          const offset = (rect.top - window.innerHeight / 2) * strength * -0.08;
+      <article class="service-card glass" data-tilt>
+        <div class="service-visual label-examples" aria-label="Business label examples">
+          <div class="mini-label label-one">
+            <strong>WARNING</strong>
+            <span>Equipment ID</span>
+          </div>
+          <div class="mini-label label-two">
+            <strong>QR</strong>
+            <span>Scan Menu</span>
+          </div>
+          <div class="mini-label label-three">
+            <strong>LOCAL</strong>
+            <span>Product Label</span>
+          </div>
+        </div>
+        <span>03</span>
+        <h3>Business Labels</h3>
+        <p>
+          Product labels, QR labels, warning labels, shop stickers, and small-batch brand
+          pieces that make your packaging feel finished.
+        </p>
+      </article>
+    </section>
 
-          item.style.setProperty("--parallax-y", `${offset + scroll * strength * -0.02}px`);
-          item.style.setProperty("--parallax-x", `${Math.sin(scroll * 0.004) * strength * 18}px`);
-        });
-      }
+    <section id="quote" class="quote section-shell">
+      <div class="glass quote-panel">
+        <p class="eyebrow">Fast local quote</p>
+        <h2>Tell Us Where It Sticks</h2>
 
-      tiltCards.forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - 0.5;
-          const y = (event.clientY - rect.top) / rect.height - 0.5;
+        <form action="https://forminit.com/f/pnj4rrguokf" method="POST" enctype="multipart/form-data">
+          <label>
+            Project type
+            <select name="project_type">
+              <option>Custom Die-Cut</option>
+              <option>Vinyl Decal</option>
+              <option>Business Labels</option>
+            </select>
+          </label>
 
-          card.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 12}deg) translateY(-8px)`;
-        });
+          <label>
+            Email
+            <input type="email" name="email" placeholder="Your Email" required>
+          </label>
 
-        card.addEventListener("pointerleave", () => {
-          card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
-        });
+          <label>
+            Surface
+            <input name="surface" type="text" placeholder="Truck, hard hat, window, product bag">
+          </label>
+
+          <label>
+            Upload Design / Photo
+            <input type="file" name="file" accept="image/*" capture="environment">
+          </label>
+
+          <label>
+            Quantity
+            <input name="quantity" type="number" min="1" placeholder="25">
+          </label>
+
+          <div class="dimension-grid" aria-label="Sticker dimensions">
+            <label>
+              Width
+              <input name="width" type="number" min="0.5" step="0.25" placeholder="4">
+            </label>
+
+            <label>
+              Height
+              <input name="height" type="number" min="0.5" step="0.25" placeholder="3">
+            </label>
+
+            <label>
+              Units
+              <select name="units">
+                <option>inches</option>
+                <option>centimeters</option>
+              </select>
+            </label>
+          </div>
+
+          <p class="size-note">
+            Sweet spot: 2-12 inch decals and labels. Ask for larger storefront pieces, but
+            full vehicle wraps are outside the current focus.
+          </p>
+
+          <button class="catalog-button" type="submit">
+            <span>Send Quote Request</span>
+          </button>
+
+          <p class="form-note" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer glass">
+    <div>
+      <p>Copyright 2026 Gulf Coast Sticker Solutions. Angleton, Texas.</p>
+      <p class="call-line">Feel free to give me a call anytime: <a href="tel:18328579181">832-857-9181</a></p>
+    </div>
+
+    <a class="google-link" href="https://www.google.com/search?q=Gulf+Coast+Sticker+Solutions+Angleton+Texas" target="_blank" rel="noreferrer">
+      Find us on Google
+    </a>
+  </footer>
+
+  <script>
+    const header = document.querySelector("[data-header]");
+    const tiltCards = document.querySelectorAll("[data-tilt]");
+    const depthItems = document.querySelectorAll("[data-depth]");
+    const rippleButtons = document.querySelectorAll(".catalog-button");
+
+    function updateHeader() {
+      header.classList.toggle("is-scrolled", window.scrollY > 20);
+    }
+
+    function updatePointer(event) {
+      document.documentElement.style.setProperty("--cursor-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--cursor-y", `${event.clientY}px`);
+    }
+
+    function updateParallax() {
+      const scroll = window.scrollY;
+
+      depthItems.forEach((item) => {
+        const strength = Number(item.dataset.depth || 0.1);
+        const rect = item.getBoundingClientRect();
+        const offset = (rect.top - window.innerHeight / 2) * strength * -0.08;
+
+        item.style.setProperty("--parallax-y", `${offset + scroll * strength * -0.02}px`);
+        item.style.setProperty("--parallax-x", `${Math.sin(scroll * 0.004) * strength * 18}px`);
+      });
+    }
+
+    tiltCards.forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        card.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 12}deg) translateY(-8px)`;
       });
 
-      rippleButtons.forEach((button) => {
-        button.addEventListener("pointermove", (event) => {
-          const rect = button.getBoundingClientRect();
-
-          button.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
-          button.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
-        });
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0)";
       });
+    });
 
-      window.addEventListener("scroll", () => {
-        updateHeader();
-        updateParallax();
+    rippleButtons.forEach((button) => {
+      button.addEventListener("pointermove", (event) => {
+        const rect = button.getBoundingClientRect();
+
+        button.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
+        button.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
       });
+    });
 
-      window.addEventListener("pointermove", updatePointer);
-      window.addEventListener("resize", updateParallax);
-
+    window.addEventListener("scroll", () => {
       updateHeader();
       updateParallax();
-    </script>
-  </body>
+    });
+
+    window.addEventListener("pointermove", updatePointer);
+    window.addEventListener("resize", updateParallax);
+
+    updateHeader();
+    updateParallax();
+  </script>
+</body>
 </html>
