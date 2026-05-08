@@ -480,42 +480,6 @@
         padding-top: clamp(30px, 5vw, 70px);
       }
 
-      .photo-card {
-        border-radius: 30px;
-        min-height: 440px;
-        overflow: hidden;
-        transform: translateY(0);
-      }
-
-      .photo-card img {
-        aspect-ratio: 4 / 3;
-        display: block;
-        filter: saturate(1.08) contrast(1.04);
-        height: 300px;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .photo-card div {
-        padding: 22px;
-      }
-
-      .photo-card span {
-        color: var(--gold);
-        display: block;
-        font-size: 12px;
-        font-weight: 950;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-
-      .photo-card strong {
-        color: var(--cream);
-        display: block;
-        font-size: 20px;
-        line-height: 1.25;
-      }
-
       .placement-gallery {
         padding-top: clamp(34px, 6vw, 86px);
       }
@@ -544,6 +508,12 @@
       .placement-card {
         border-radius: 30px;
         overflow: hidden;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .placement-card:hover {
+        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(247, 180, 50, 0.16);
+        transform: translateY(-8px);
       }
 
       .mock-photo {
@@ -669,6 +639,48 @@
         margin: 10px 0 24px;
       }
 
+      .photo-card {
+        border-radius: 30px;
+        min-height: 440px;
+        overflow: hidden;
+        transform: translateY(0);
+        transition: transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .photo-card:hover {
+        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(99, 199, 183, 0.2);
+        transform: translateY(-8px);
+      }
+
+      .photo-card img {
+        aspect-ratio: 4 / 3;
+        display: block;
+        filter: saturate(1.08) contrast(1.04);
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .photo-card div {
+        padding: 22px;
+      }
+
+      .photo-card span {
+        color: var(--gold);
+        display: block;
+        font-size: 12px;
+        font-weight: 950;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .photo-card strong {
+        color: var(--cream);
+        display: block;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
       .intro-card,
       .quote-panel {
         border-radius: 34px;
@@ -690,11 +702,8 @@
         min-height: 360px;
         padding: clamp(22px, 3vw, 34px);
         transform-style: preserve-3d;
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
         will-change: transform;
-      }
-
-      .service-card:hover {
-        border-color: rgba(255, 241, 220, 0.66);
       }
 
       .service-visual {
@@ -812,6 +821,11 @@
 
       .label-three {
         grid-column: 1 / -1;
+      }
+
+      .service-card:hover {
+        border-color: rgba(255, 241, 220, 0.66);
+        box-shadow: 0 32px 98px rgba(0, 0, 0, 0.38), 0 0 42px rgba(99, 199, 183, 0.18);
       }
 
       .service-card span {
@@ -1108,36 +1122,30 @@
 
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Gulf Coast Sticker Solutions home">
-        <img src="./assets/gulf-coast-logo.png" alt="Gulf Coast Sticker Solutions logo">
+        <img src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
         <span>
           <strong>Gulf Coast</strong>
           <em>Sticker Solutions</em>
         </span>
       </a>
-
       <nav class="nav" aria-label="Primary navigation">
         <a href="#catalog">Catalog</a>
         <a href="#services">Services</a>
         <a href="#footer">Google</a>
       </nav>
-
       <a class="quote-link" href="#quote">Get a Quote</a>
     </header>
 
     <main id="top">
       <section class="hero section-shell" data-depth="0.18">
         <div class="glass hero-panel">
-          <img class="hero-logo" src="./assets/gulf-coast-logo.png" alt="Gulf Coast Sticker Solutions logo">
-
+          <img class="hero-logo" src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
           <p class="eyebrow">Angleton, Texas | Gulf Coast made</p>
-
           <h1>Quality That Sticks. Designs That Pop.</h1>
-
           <p class="hero-copy">
             Custom stickers, small vinyl decals, hard-hat marks, product labels, and storefront
             lettering with polished coastal style and shop-grade durability.
           </p>
-
           <div class="hero-actions">
             <a class="catalog-button" href="#catalog">
               <span>View Our Catalog</span>
@@ -1148,7 +1156,7 @@
 
         <div class="depth-card logo-showcase glass" data-depth="0.32">
           <div class="sticker-rim">
-            <img src="./assets/gulf-coast-logo.png" alt="">
+            <img src="./logo.png" alt="">
           </div>
           <p>Glossy coastal decals built for helmets, windows, gear, packaging, and labels.</p>
         </div>
@@ -1331,7 +1339,7 @@
 
             <label>
               Email
-              <input type="email" name="email" required placeholder="Your Email">
+              <input type="email" name="email" placeholder="Your Email" required>
             </label>
 
             <label>
@@ -1417,10 +1425,12 @@
 
       function updateParallax() {
         const scroll = window.scrollY;
+
         depthItems.forEach((item) => {
           const strength = Number(item.dataset.depth || 0.1);
           const rect = item.getBoundingClientRect();
           const offset = (rect.top - window.innerHeight / 2) * strength * -0.08;
+
           item.style.setProperty("--parallax-y", `${offset + scroll * strength * -0.02}px`);
           item.style.setProperty("--parallax-x", `${Math.sin(scroll * 0.004) * strength * 18}px`);
         });
@@ -1431,6 +1441,7 @@
           const rect = card.getBoundingClientRect();
           const x = (event.clientX - rect.left) / rect.width - 0.5;
           const y = (event.clientY - rect.top) / rect.height - 0.5;
+
           card.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 12}deg) translateY(-8px)`;
         });
 
@@ -1442,6 +1453,7 @@
       rippleButtons.forEach((button) => {
         button.addEventListener("pointermove", (event) => {
           const rect = button.getBoundingClientRect();
+
           button.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
           button.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
         });
