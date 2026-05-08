@@ -16,7 +16,6 @@
       --cream: #fff1dc;
       --foam: #bce7dc;
       --seafoam: #63c7b7;
-      --teal: #0d7e75;
       --gold: #f7b432;
       --orange: #e66f16;
       --glass-border: rgba(255, 255, 255, 0.34);
@@ -262,10 +261,6 @@
       padding-top: 140px;
     }
 
-    .hero > * {
-      min-width: 0;
-    }
-
     .hero-panel {
       border-radius: 34px;
       overflow: hidden;
@@ -399,7 +394,8 @@
     .service-card,
     .logo-showcase,
     .intro-card,
-    .quote-panel {
+    .quote-panel,
+    .sticker-shot {
       transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
     }
 
@@ -410,7 +406,8 @@
     .service-card:hover,
     .logo-showcase:hover,
     .intro-card:hover,
-    .quote-panel:hover {
+    .quote-panel:hover,
+    .sticker-shot:hover {
       box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38), 0 0 44px rgba(99, 199, 183, 0.18);
       transform: translateY(-6px);
     }
@@ -556,7 +553,8 @@
 
     .photo-card,
     .placement-card,
-    .service-card {
+    .service-card,
+    .sticker-shot {
       border-radius: 30px;
       overflow: hidden;
     }
@@ -568,7 +566,8 @@
     .photo-card img,
     .mock-photo img,
     .machine-photo img,
-    .vinyl-photo img {
+    .vinyl-photo img,
+    .sticker-shot img {
       display: block;
       filter: saturate(1.08) contrast(1.06);
       height: 100%;
@@ -581,11 +580,13 @@
       height: 300px;
     }
 
-    .photo-card div {
+    .photo-card div,
+    .sticker-shot div {
       padding: 22px;
     }
 
-    .photo-card span {
+    .photo-card span,
+    .sticker-shot span {
       color: var(--gold);
       display: block;
       font-size: 12px;
@@ -594,11 +595,28 @@
       text-transform: uppercase;
     }
 
-    .photo-card strong {
+    .photo-card strong,
+    .sticker-shot strong {
       color: var(--cream);
       display: block;
       font-size: 20px;
       line-height: 1.25;
+    }
+
+    .sticker-gallery {
+      padding-top: clamp(34px, 6vw, 86px);
+    }
+
+    .sticker-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .sticker-shot img {
+      aspect-ratio: 1 / 1;
+      height: auto;
+      min-height: 260px;
     }
 
     .placement-gallery {
@@ -827,7 +845,7 @@
       padding-top: clamp(44px, 8vw, 100px);
     }
 
-    .quote-panel form {
+    .quote-form {
       display: grid;
       gap: 16px;
       margin: 32px auto 0;
@@ -841,15 +859,15 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .quote-panel form label {
+    .quote-form label {
       color: var(--cream);
       font-size: 12px;
       font-weight: 950;
       text-transform: uppercase;
     }
 
-    .quote-panel form input,
-    .quote-panel form select {
+    .quote-form input,
+    .quote-form select {
       background: rgba(255, 255, 255, 0.14);
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 18px;
@@ -861,16 +879,16 @@
       width: 100%;
     }
 
-    .quote-panel form input[type="file"] {
+    .quote-form input[type="file"] {
       cursor: pointer;
       padding: 14px;
     }
 
-    .quote-panel form option {
+    .quote-form option {
       color: var(--ink);
     }
 
-    .quote-panel form input::placeholder {
+    .quote-form input::placeholder {
       color: rgba(255, 241, 220, 0.54);
     }
 
@@ -929,63 +947,32 @@
     }
 
     @keyframes tideDrift {
-      from {
-        transform: translate3d(-3vw, -2vh, 0) rotate(-4deg);
-      }
-
-      to {
-        transform: translate3d(4vw, 3vh, 0) rotate(4deg);
-      }
+      from { transform: translate3d(-3vw, -2vh, 0) rotate(-4deg); }
+      to { transform: translate3d(4vw, 3vh, 0) rotate(4deg); }
     }
 
     @keyframes floatCurrent {
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-      }
-
-      50% {
-        transform: translate3d(5vw, -3vh, 0) rotate(10deg);
-      }
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      50% { transform: translate3d(5vw, -3vh, 0) rotate(10deg); }
     }
 
     @keyframes pulseGlow {
-      from {
-        opacity: 0.35;
-        transform: scale(0.92);
-      }
-
-      to {
-        opacity: 0.8;
-        transform: scale(1.08);
-      }
+      from { opacity: 0.35; transform: scale(0.92); }
+      to { opacity: 0.8; transform: scale(1.08); }
     }
 
     @keyframes floatLayer {
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
-
-      50% {
-        transform: translate3d(0, -16px, 0);
-      }
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -16px, 0); }
     }
 
     @keyframes buttonCurrent {
-      0%,
-      100% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     @keyframes fishSwim {
-      0%,
-      100% {
+      0%, 100% {
         left: 16px;
         transform: translateY(0) scaleX(1.25);
       }
@@ -997,19 +984,9 @@
     }
 
     @keyframes bubbleRise {
-      0% {
-        opacity: 0;
-        transform: translateY(8px) scale(0.8);
-      }
-
-      50% {
-        opacity: 0.8;
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateY(-22px) scale(1.25);
-      }
+      0% { opacity: 0; transform: translateY(8px) scale(0.8); }
+      50% { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(-22px) scale(1.25); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1035,7 +1012,8 @@
       .hero,
       .photo-gallery,
       .placement-grid,
-      .services {
+      .services,
+      .sticker-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1151,6 +1129,7 @@
     <nav class="nav" aria-label="Primary navigation">
       <a href="#catalog">Catalog</a>
       <a href="#services">Services</a>
+      <a href="#sticker-gallery">Gallery</a>
       <a href="#footer">Google</a>
     </nav>
 
@@ -1178,7 +1157,7 @@
 
       <div class="depth-card logo-showcase glass" data-depth="0.32">
         <div class="sticker-rim">
-          <img src="./logo.png" alt="">
+          <img src="./logo.png" alt="Gulf Coast Sticker Solutions emblem">
         </div>
 
         <div class="sticker-badges" aria-label="Interactive decal uses">
@@ -1234,6 +1213,91 @@
           <strong>Great for windows, displays, laptops, and gear.</strong>
         </div>
       </article>
+    </section>
+
+    <section id="sticker-gallery" class="sticker-gallery section-shell">
+      <div class="glass placement-intro">
+        <p class="eyebrow">Macro print quality</p>
+        <h2>Our Printed Decals.</h2>
+        <p>
+          Close-up texture, clean cuts, strong color, and specialty finishes for local brands
+          that need small-format stickers to look premium.
+        </p>
+      </div>
+
+      <div class="sticker-grid">
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20holographic%20alien%20logo%20die%20cut%20sticker%20on%20a%20black%20work%20table%2C%20rainbow%20foil%20finish%2C%20sharp%20vinyl%20edge%2C%20premium%20print%20texture%2C%20studio%20lighting?width=900&height=900&seed=412&nologo=true" alt="Holographic alien logo die-cut sticker macro photo">
+          <div>
+            <span>Holographic alien logo</span>
+            <strong>Rainbow film, crisp contour cut, sharp ink detail.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20matte%20outdoor%20brand%20badge%20die%20cut%20sticker%2C%20forest%20green%20and%20cream%2C%20soft%20touch%20finish%2C%20visible%20vinyl%20texture%2C%20clean%20cut%20edge?width=900&height=900&seed=913&nologo=true" alt="Matte outdoor brand badge sticker macro photo">
+          <div>
+            <span>Matte outdoor badge</span>
+            <strong>Soft-touch finish with rugged brand contrast.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20glossy%20pizza%20slice%20die%20cut%20sticker%2C%20bright%20red%20yellow%20and%20cream%20ink%2C%20clear%20laminate%20shine%2C%20sharp%20kiss%20cut%20edge?width=900&height=900&seed=147&nologo=true" alt="Glossy pizza slice custom sticker macro photo">
+          <div>
+            <span>Glossy pizza slice</span>
+            <strong>High-color shine for menus, boxes, and promos.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20metallic%20brewery%20emblem%20round%20sticker%2C%20copper%20foil%20shine%2C%20navy%20ink%2C%20premium%20label%20texture%2C%20dramatic%20side%20light?width=900&height=900&seed=742&nologo=true" alt="Metallic brewery emblem sticker macro photo">
+          <div>
+            <span>Metallic brewery emblem</span>
+            <strong>Reflective details for labels and local merch.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20clear%20vinyl%20window%20decal%20on%20glass%2C%20transparent%20edge%2C%20white%20ink%20details%2C%20soft%20reflection%2C%20premium%20print%20quality?width=900&height=900&seed=864&nologo=true" alt="Clear vinyl window decal macro photo">
+          <div>
+            <span>Clear window decal</span>
+            <strong>Clean transparent edge for glass and displays.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20an%20industrial%20single%20color%20warning%20label%20sticker%2C%20black%20vinyl%20on%20yellow%20film%2C%20sharp%20weeding%2C%20shop%20table%20texture?width=900&height=900&seed=605&nologo=true" alt="Industrial safety label sticker macro photo">
+          <div>
+            <span>Industrial safety label</span>
+            <strong>Bold single-color marks for tools and equipment.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20a%20coastal%20mascot%20die%20cut%20sticker%2C%20teal%20wave%20and%20gold%20sun%2C%20gloss%20laminate%2C%20clean%20contour%20cut%2C%20premium%20vinyl?width=900&height=900&seed=227&nologo=true" alt="Coastal mascot die-cut sticker macro photo">
+          <div>
+            <span>Coastal mascot cut</span>
+            <strong>Polished brand stickers with Gulf Coast personality.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20hard%20hat%20name%20decal%20sets%20on%20white%20liner%2C%20single%20color%20vinyl%2C%20clean%20weeding%2C%20industrial%20shop%20lighting?width=900&height=900&seed=338&nologo=true" alt="Hard-hat decal set macro photo">
+          <div>
+            <span>Hard-hat decal set</span>
+            <strong>Readable marks built for crew identity.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://image.pollinations.ai/prompt/hyperrealistic%20macro%20photo%20of%20custom%20business%20label%20stickers%20on%20a%20roll%2C%20glossy%20ink%2C%20perfect%20registration%2C%20sharp%20text%2C%20premium%20packaging%20detail?width=900&height=900&seed=519&nologo=true" alt="Custom business label stickers on a roll macro photo">
+          <div>
+            <span>Business label roll</span>
+            <strong>Clean repeat labels for packaging and product runs.</strong>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="placement-gallery section-shell" aria-label="Storefront, public QR decal, and playing card examples">
@@ -1300,9 +1364,9 @@
       </article>
 
       <article class="service-card glass" data-tilt>
-        <div class="service-visual vinyl-photo" aria-label="Premium vinyl roll">
-          <img src="https://cdn.pixabay.com/photo/2016/05/20/16/43/vinyl-1401390_1280.jpg" alt="Premium vinyl roll for decals">
-          <span>Premium vinyl film</span>
+        <div class="service-visual vinyl-photo" aria-label="Fresh-cut single-color vinyl decal">
+          <img src="https://image.pollinations.ai/prompt/vibrant%20photorealistic%20photo%20of%20an%20intricate%20single%20color%20vinyl%20decal%20reading%20GULF%20COAST%20MADE%2C%20freshly%20cut%20and%20half%20weeded%20on%20a%20clean%20work%20table%2C%20squeegee%20nearby%2C%20premium%20vinyl%20texture%2C%20studio%20lighting?width=1200&height=700&seed=1207&nologo=true" alt="Fresh-cut single-color vinyl decal half weeded on a work table with squeegee nearby">
+          <span>Fresh-cut vinyl detail</span>
         </div>
         <span>02</span>
         <h3>Vinyl Decals</h3>
@@ -1341,10 +1405,10 @@
         <p class="eyebrow">Fast local quote</p>
         <h2>Tell Us Where It Sticks</h2>
 
-        <form action="https://forminit.com/f/pnj4rrguokf" method="POST" enctype="multipart/form-data">
+        <form action="https://forminit.com/f/pnj4rrguokf" method="POST" enctype="multipart/form-data" class="quote-form">
           <label>
             Project type
-            <select name="project_type">
+            <select name="fi-select-project_type">
               <option>Custom Die-Cut</option>
               <option>Vinyl Decal</option>
               <option>Business Labels</option>
@@ -1353,38 +1417,38 @@
 
           <label>
             Email
-            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="email" name="fi-sender-email" placeholder="Your Email" required>
           </label>
 
           <label>
             Surface
-            <input name="surface" type="text" placeholder="Truck, hard hat, window, product bag">
+            <input name="fi-text-surface" type="text" placeholder="Truck, hard hat, window, product bag">
           </label>
 
           <label>
             Upload Design / Photo
-            <input type="file" name="file" accept="image/*">
+            <input type="file" name="fi-file-attachment" accept="image/*">
           </label>
 
           <label>
             Quantity
-            <input name="quantity" type="number" min="1" placeholder="25">
+            <input name="fi-number-quantity" type="number" min="1" placeholder="25">
           </label>
 
           <div class="dimension-grid" aria-label="Sticker dimensions">
             <label>
               Width
-              <input name="width" type="number" min="0.5" step="0.25" placeholder="4">
+              <input name="fi-number-width" type="number" min="0.5" step="0.25" placeholder="4">
             </label>
 
             <label>
               Height
-              <input name="height" type="number" min="0.5" step="0.25" placeholder="3">
+              <input name="fi-number-height" type="number" min="0.5" step="0.25" placeholder="3">
             </label>
 
             <label>
               Units
-              <select name="units">
+              <select name="fi-select-units">
                 <option>inches</option>
                 <option>centimeters</option>
               </select>
