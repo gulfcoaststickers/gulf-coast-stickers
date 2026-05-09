@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gulf Coast Sticker Solutions</title>
   <meta name="description" content="Custom die-cut stickers, vinyl decals, and business labels for Gulf Coast businesses in Angleton, Texas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -183,7 +186,7 @@
       align-items: center;
       display: inline-flex;
       gap: 12px;
-      min-width: 238px;
+      min-width: 260px;
     }
 
     .brand img {
@@ -196,23 +199,12 @@
       width: 58px;
     }
 
-    .brand strong,
-    .brand em {
+    .brand span {
       display: block;
-      line-height: 1.05;
-    }
-
-    .brand strong {
       font-size: 14px;
       font-weight: 900;
+      line-height: 1.1;
       text-transform: uppercase;
-    }
-
-    .brand em {
-      color: var(--foam);
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 700;
     }
 
     .nav {
@@ -286,7 +278,7 @@
     h1,
     h2,
     h3 {
-      font-family: "Arial Narrow", Impact, Arial, sans-serif;
+      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
       letter-spacing: 0;
       line-height: 0.92;
       margin: 0;
@@ -313,7 +305,8 @@
 
     .hero-copy,
     .intro-card p,
-    .service-card p {
+    .service-card p,
+    .gallery-intro p {
       color: rgba(255, 241, 220, 0.86);
       font-size: clamp(17px, 2vw, 22px);
       font-weight: 650;
@@ -386,8 +379,6 @@
     .quote-link,
     .catalog-button,
     .ghost-button,
-    .photo-card,
-    .placement-card,
     .service-card,
     .logo-showcase,
     .intro-card,
@@ -398,8 +389,6 @@
 
     .quote-link:hover,
     .ghost-button:hover,
-    .photo-card:hover,
-    .placement-card:hover,
     .service-card:hover,
     .logo-showcase:hover,
     .intro-card:hover,
@@ -464,7 +453,8 @@
     }
 
     .intro-card,
-    .quote-panel {
+    .quote-panel,
+    .gallery-intro {
       border-radius: 34px;
       margin: 0 auto;
       max-width: 980px;
@@ -536,226 +526,17 @@
       top: 40px;
     }
 
-    .photo-gallery,
-    .placement-grid,
     .services {
       display: grid;
       gap: 22px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .photo-gallery {
-      padding-top: clamp(30px, 5vw, 70px);
-    }
-
-    .photo-card,
-    .placement-card,
-    .service-card,
-    .sticker-shot {
-      border-radius: 30px;
-      overflow: hidden;
-    }
-
-    .photo-card {
-      min-height: 440px;
-    }
-
-    .photo-card img,
-    .mock-photo img,
-    .machine-photo img,
-    .vinyl-photo img,
-    .sticker-shot img {
-      display: block;
-      filter: saturate(1.08) contrast(1.06);
-      height: 100%;
-      object-fit: cover;
-      width: 100%;
-    }
-
-    .photo-card img {
-      aspect-ratio: 4 / 3;
-      height: 300px;
-    }
-
-    .photo-card div,
-    .sticker-shot div {
-      padding: 22px;
-    }
-
-    .photo-card span,
-    .sticker-shot span {
-      color: var(--gold);
-      display: block;
-      font-size: 12px;
-      font-weight: 950;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .photo-card strong,
-    .sticker-shot strong {
-      color: var(--cream);
-      display: block;
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    .sticker-gallery {
-      padding-top: clamp(34px, 6vw, 86px);
-    }
-
-    .sticker-grid {
-      display: grid;
-      gap: 22px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .sticker-shot img {
-      aspect-ratio: 1 / 1;
-      height: auto;
-      min-height: 260px;
-    }
-
-    .placement-gallery {
-      padding-top: clamp(34px, 6vw, 86px);
-    }
-
-    .placement-intro {
-      border-radius: 34px;
-      margin-bottom: 22px;
-      padding: clamp(22px, 4vw, 42px);
-    }
-
-    .placement-intro p:not(.eyebrow) {
-      color: rgba(255, 241, 220, 0.82);
-      font-size: clamp(17px, 2vw, 21px);
-      font-weight: 700;
-      line-height: 1.5;
-      margin: 18px 0 0;
-      max-width: 920px;
-    }
-
-    .mock-photo {
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .mock-photo::after {
-      background: linear-gradient(180deg, transparent 34%, rgba(7, 26, 62, 0.48));
-      content: "";
-      inset: 0;
-      pointer-events: none;
-      position: absolute;
-    }
-
-    .window-decal,
-    .qr-decal,
-    .card-stamp {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position: absolute;
-      z-index: 2;
-    }
-
-    .window-decal {
-      background: rgba(255, 241, 220, 0.78);
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      color: var(--navy);
-      left: 9%;
-      padding: 14px 16px;
-      top: 14%;
-      transform: rotate(-2deg);
-    }
-
-    .window-decal strong,
-    .window-decal span,
-    .card-stamp strong,
-    .card-stamp span {
-      display: block;
-    }
-
-    .window-decal strong,
-    .card-stamp strong {
-      font-family: "Arial Narrow", Impact, Arial, sans-serif;
-      font-size: 28px;
-      line-height: 0.9;
-      text-transform: uppercase;
-    }
-
-    .window-decal span,
-    .card-stamp span {
-      font-size: 11px;
-      font-weight: 950;
-      margin-top: 5px;
-      text-transform: uppercase;
-    }
-
-    .qr-decal {
-      background: rgba(255, 255, 255, 0.88);
-      border: 5px solid var(--cream);
-      bottom: 12%;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-      color: var(--navy);
-      display: grid;
-      gap: 5px;
-      grid-template-columns: repeat(2, 1fr);
-      padding: 10px;
-      right: 10%;
-      transform: rotate(2deg);
-      width: 104px;
-    }
-
-    .qr-decal span {
-      background:
-        linear-gradient(90deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%),
-        linear-gradient(0deg, var(--navy) 45%, transparent 45% 60%, var(--navy) 60%);
-      height: 28px;
-    }
-
-    .qr-decal em {
-      font-size: 10px;
-      font-style: normal;
-      font-weight: 950;
-      grid-column: 1 / -1;
-      text-align: center;
-    }
-
-    .card-stamp {
-      background: linear-gradient(135deg, rgba(7, 26, 62, 0.9), rgba(13, 126, 117, 0.82));
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      bottom: 12%;
-      color: var(--cream);
-      left: 10%;
-      padding: 16px 18px;
-      transform: rotate(-4deg);
-    }
-
-    .placement-card h3,
-    .placement-card p {
-      padding-left: 22px;
-      padding-right: 22px;
-    }
-
-    .placement-card h3 {
-      font-size: 34px;
-      margin-top: 22px;
-    }
-
-    .placement-card p {
-      color: rgba(255, 241, 220, 0.82);
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.45;
-      margin: 10px 0 24px;
-    }
-
-    .services {
       padding-top: clamp(50px, 8vw, 110px);
     }
 
     .service-card {
+      border-radius: 30px;
       min-height: 360px;
+      overflow: hidden;
       padding: clamp(22px, 3vw, 34px);
       transform-style: preserve-3d;
       will-change: transform;
@@ -772,8 +553,15 @@
       position: relative;
     }
 
-    .machine-photo span,
-    .vinyl-photo span {
+    .service-visual img {
+      display: block;
+      filter: saturate(1.08) contrast(1.06);
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .service-visual span {
       background: rgba(7, 26, 62, 0.78);
       border: 1px solid rgba(255, 255, 255, 0.32);
       border-radius: 999px;
@@ -805,7 +593,7 @@
     }
 
     .mini-label strong {
-      font-family: "Arial Narrow", Impact, Arial, sans-serif;
+      font-family: "Barlow Condensed", Impact, Arial, sans-serif;
       font-size: 24px;
       line-height: 0.9;
     }
@@ -831,11 +619,57 @@
       grid-column: 1 / -1;
     }
 
-    .service-card span {
+    .service-card > span {
       color: var(--gold);
       display: block;
       font-weight: 950;
       margin-bottom: 28px;
+    }
+
+    .sticker-gallery {
+      padding-top: clamp(34px, 6vw, 86px);
+    }
+
+    .sticker-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .sticker-shot {
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .sticker-shot img {
+      aspect-ratio: 1 / 1;
+      display: block;
+      filter: saturate(1.08) contrast(1.06);
+      height: auto;
+      min-height: 260px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .sticker-shot div {
+      padding: 22px;
+    }
+
+    .sticker-shot span {
+      color: var(--gold);
+      display: block;
+      font-size: 12px;
+      font-weight: 950;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .sticker-shot strong {
+      color: var(--cream);
+      display: block;
+      font-size: 20px;
+      line-height: 1.25;
     }
 
     .quote {
@@ -945,32 +779,63 @@
     }
 
     @keyframes tideDrift {
-      from { transform: translate3d(-3vw, -2vh, 0) rotate(-4deg); }
-      to { transform: translate3d(4vw, 3vh, 0) rotate(4deg); }
+      from {
+        transform: translate3d(-3vw, -2vh, 0) rotate(-4deg);
+      }
+
+      to {
+        transform: translate3d(4vw, 3vh, 0) rotate(4deg);
+      }
     }
 
     @keyframes floatCurrent {
-      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-      50% { transform: translate3d(5vw, -3vh, 0) rotate(10deg); }
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+
+      50% {
+        transform: translate3d(5vw, -3vh, 0) rotate(10deg);
+      }
     }
 
     @keyframes pulseGlow {
-      from { opacity: 0.35; transform: scale(0.92); }
-      to { opacity: 0.8; transform: scale(1.08); }
+      from {
+        opacity: 0.35;
+        transform: scale(0.92);
+      }
+
+      to {
+        opacity: 0.8;
+        transform: scale(1.08);
+      }
     }
 
     @keyframes floatLayer {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -16px, 0); }
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: translate3d(0, -16px, 0);
+      }
     }
 
     @keyframes buttonCurrent {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     @keyframes fishSwim {
-      0%, 100% {
+      0%,
+      100% {
         left: 16px;
         transform: translateY(0) scaleX(1.25);
       }
@@ -982,9 +847,19 @@
     }
 
     @keyframes bubbleRise {
-      0% { opacity: 0; transform: translateY(8px) scale(0.8); }
-      50% { opacity: 0.8; }
-      100% { opacity: 0; transform: translateY(-22px) scale(1.25); }
+      0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.8);
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-22px) scale(1.25);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1008,8 +883,6 @@
       }
 
       .hero,
-      .photo-gallery,
-      .placement-grid,
       .services,
       .sticker-grid {
         grid-template-columns: 1fr;
@@ -1118,10 +991,7 @@
   <header class="site-header" data-header>
     <a class="brand" href="#top" aria-label="Gulf Coast Sticker Solutions home">
       <img src="./logo.png" alt="Gulf Coast Sticker Solutions logo">
-      <span>
-        <strong>Gulf Coast</strong>
-        <em>Sticker Solutions™</em>
-      </span>
+      <span>Gulf Coast Sticker Solutions™</span>
     </a>
 
     <nav class="nav" aria-label="Primary navigation">
@@ -1187,169 +1057,9 @@
       </div>
     </section>
 
-    <section class="photo-gallery section-shell" aria-label="Clear decal example photos">
-      <article class="photo-card glass">
-        <img src="https://images.pexels.com/photos/13537097/pexels-photo-13537097.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional die-cut sticker sheet with glossy printed decals">
-        <div>
-          <span>Die-cut sticker sheets</span>
-          <strong>Sharp edges, glossy color, clean detail.</strong>
-        </div>
-      </article>
-
-      <article class="photo-card glass">
-        <img src="https://images.pexels.com/photos/8947553/pexels-photo-8947553.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Blue product jar with a clean blank label">
-        <div>
-          <span>Product labels</span>
-          <strong>Small-batch packaging that looks finished.</strong>
-        </div>
-      </article>
-
-      <article class="photo-card glass">
-        <img src="https://images.pexels.com/photos/5204143/pexels-photo-5204143.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional clear vinyl decal applied to glass">
-        <div>
-          <span>Clear decal options</span>
-          <strong>Great for windows, displays, laptops, and gear.</strong>
-        </div>
-      </article>
-    </section>
-
-    <section id="sticker-gallery" class="sticker-gallery section-shell">
-      <div class="glass placement-intro">
-        <p class="eyebrow">Macro print quality</p>
-        <h2>Our Printed Decals.</h2>
-        <p>
-          Close-up texture, clean cuts, strong color, and specialty finishes for local brands
-          that need small-format stickers to look premium.
-        </p>
-      </div>
-
-      <div class="sticker-grid">
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/16605272/pexels-photo-16605272.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Detailed custom die-cut sticker sheet with vivid glossy colors">
-          <div>
-            <span>Holographic alien logo</span>
-            <strong>Rainbow film, crisp contour cut, sharp ink detail.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/13537097/pexels-photo-13537097.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional matte and glossy die-cut sticker sheet">
-          <div>
-            <span>Matte outdoor badge</span>
-            <strong>Soft-touch finish with rugged brand contrast.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/16605271/pexels-photo-16605271.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Glossy custom sticker sheet with colorful printed designs">
-          <div>
-            <span>Glossy pizza slice</span>
-            <strong>High-color shine for menus, boxes, and promos.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Metallic-looking product label detail with premium shine">
-          <div>
-            <span>Metallic brewery emblem</span>
-            <strong>Reflective details for labels and local merch.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/5204143/pexels-photo-5204143.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Clear vinyl decal applied to glass with clean transparent edge">
-          <div>
-            <span>Clear window decal</span>
-            <strong>Clean transparent edge for glass and displays.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Industrial work detail suited for safety and equipment labels">
-          <div>
-            <span>Industrial safety label</span>
-            <strong>Bold single-color marks for tools and equipment.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/8947553/pexels-photo-8947553.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Premium product label close-up with clean branding surface">
-          <div>
-            <span>Coastal mascot cut</span>
-            <strong>Polished brand stickers with Gulf Coast personality.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Sharp safety helmet photo ready for a custom company logo decal">
-          <div>
-            <span>Hard-hat decal set</span>
-            <strong>Readable marks built for crew identity.</strong>
-          </div>
-        </article>
-
-        <article class="sticker-shot glass">
-          <img src="https://images.pexels.com/photos/4386322/pexels-photo-4386322.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Detailed professional glossy product labels on a continuous roll">
-          <div>
-            <span>Business label roll</span>
-            <strong>Clean repeat labels for packaging and product runs.</strong>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="placement-gallery section-shell" aria-label="Storefront, public QR decal, and playing card examples">
-      <div class="glass placement-intro">
-        <p class="eyebrow">More ways to stick out</p>
-        <h2>Storefronts, QR Decals, Public Spaces, And Custom Cards</h2>
-        <p>
-          Clean small-format decals are perfect for doors, counters, pop-up booths, checkout
-          areas, public-facing instructions, and specialty items like custom playing cards.
-        </p>
-      </div>
-
-      <div class="placement-grid">
-        <article class="placement-card glass">
-          <div class="mock-photo">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=80" alt="Retail storefront with glass windows">
-            <div class="window-decal">
-              <strong>GULF COAST</strong>
-              <span>Hours | Logo | Door Lettering</span>
-            </div>
-          </div>
-          <h3>Storefront Glass</h3>
-          <p>Door logos, hours, entrance decals, QR review prompts, and clean window lettering.</p>
-        </article>
-
-        <article class="placement-card glass">
-          <div class="mock-photo">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=80" alt="Public restaurant and cafe interior">
-            <div class="qr-decal" aria-label="Mock QR code decal">
-              <span></span><span></span><span></span><span></span>
-              <em>SCAN MENU</em>
-            </div>
-          </div>
-          <h3>Public QR Decals</h3>
-          <p>Menu codes, review links, payment prompts, sign-up forms, and event check-ins.</p>
-        </article>
-
-        <article class="placement-card glass">
-          <div class="mock-photo">
-            <img src="https://images.pexels.com/photos/8762318/pexels-photo-8762318.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Close-up of playing cards">
-            <div class="card-stamp">
-              <strong>Custom</strong>
-              <span>Playing Cards</span>
-            </div>
-          </div>
-          <h3>Custom Playing Cards</h3>
-          <p>Branded card backs, novelty decks, promo cards, party sets, and local merch ideas.</p>
-        </article>
-      </div>
-    </section>
-
     <section id="services" class="services section-shell">
       <article class="service-card glass" data-tilt>
-        <div class="service-visual machine-photo" aria-label="Roland BN-20A printer/cutter">
+        <div class="service-visual" aria-label="Roland BN-20A printer/cutter">
           <img src="https://image.rolanddg.com/-/media/roland-apac/mea/images/search/products/printers/eco-solvent/og_bn20.jpg?rev=6a96f17f19c64357a736a458c8643f44" alt="Roland VersaStudio BN-20A desktop printer cutter">
           <span>Print + cut setup</span>
         </div>
@@ -1362,7 +1072,7 @@
       </article>
 
       <article class="service-card glass" data-tilt>
-        <div class="service-visual vinyl-photo" aria-label="Single-color vinyl decal being applied or prepared">
+        <div class="service-visual" aria-label="Single-color vinyl decal being applied or prepared">
           <img src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Single-color vinyl decal work detail being applied or prepared">
           <span>Fresh-cut vinyl detail</span>
         </div>
@@ -1396,6 +1106,91 @@
           pieces that make your packaging feel finished.
         </p>
       </article>
+    </section>
+
+    <section id="sticker-gallery" class="sticker-gallery section-shell">
+      <div class="glass gallery-intro">
+        <p class="eyebrow">Macro print quality</p>
+        <h2>Our Printed Decals.</h2>
+        <p>
+          Close-up texture, clean cuts, strong color, and specialty finishes for local brands
+          that need small-format stickers to look premium.
+        </p>
+      </div>
+
+      <div class="sticker-grid">
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/16605272/pexels-photo-16605272.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Detailed custom die-cut sticker sheet with vivid glossy colors">
+          <div>
+            <span>Holographic sticker finish</span>
+            <strong>Rainbow shine, crisp contour cuts, sharp ink detail.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/13537097/pexels-photo-13537097.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional matte and glossy die-cut sticker sheet">
+          <div>
+            <span>Matte brand badge</span>
+            <strong>Soft-touch look with rugged brand contrast.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/16605271/pexels-photo-16605271.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Glossy custom sticker sheet with colorful printed designs">
+          <div>
+            <span>Glossy color decals</span>
+            <strong>High-color shine for boxes, menus, and promos.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Metallic-looking product label detail with premium shine">
+          <div>
+            <span>Metallic label look</span>
+            <strong>Reflective details for labels and local merch.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/5204143/pexels-photo-5204143.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Clear vinyl decal applied to glass with clean transparent edge">
+          <div>
+            <span>Clear window decal</span>
+            <strong>Clean transparent edge for glass and displays.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Sharp safety helmet photo ready for a custom company logo decal">
+          <div>
+            <span>Hard-hat decal set</span>
+            <strong>Readable marks built for crew identity.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/4386322/pexels-photo-4386322.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Detailed professional glossy product labels on a continuous roll">
+          <div>
+            <span>Business label roll</span>
+            <strong>Clean repeat labels for packaging and product runs.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/8947553/pexels-photo-8947553.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Premium product label close-up with clean branding surface">
+          <div>
+            <span>Product label finish</span>
+            <strong>Small-batch packaging that looks polished.</strong>
+          </div>
+        </article>
+
+        <article class="sticker-shot glass">
+          <img src="https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Industrial work detail suited for safety and equipment labels">
+          <div>
+            <span>Industrial safety label</span>
+            <strong>Bold single-color marks for tools and equipment.</strong>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="quote" class="quote section-shell">
